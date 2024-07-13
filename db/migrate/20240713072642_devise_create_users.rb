@@ -39,7 +39,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.1]
       t.string :address
       t.string :contact
       t.string :websites, array: true
-      t.string :social_links, array: true
+      t.json :social_links
       t.date :availability
       t.text :about
       t.string :tags, array: true

@@ -27,7 +27,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_13_072642) do
     t.string "address"
     t.string "contact"
     t.string "websites", array: true
-    t.string "social_links", array: true
+    t.json "social_links"
     t.date "availability"
     t.text "about"
     t.string "tags", array: true
