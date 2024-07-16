@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   # this is influencers controller
 
   def index
-    @influencers = User.where(brand: true)
+    @influencers = User.influencer
   end
 
   def new
