@@ -10,8 +10,9 @@ class UsersController < ApplicationController
   end
 
   def create
-    @influencer = User.new
+    @influencer = User.new(influencer_params)
     @influencer.save
+    redirect_to users_path(@influencer)
   end
 
   def show
@@ -24,6 +25,10 @@ class UsersController < ApplicationController
 
   def set_influencer
     @influencer = User.find(params[:id])
+  end
+
+  def influencer_params
+    params.require(:influencer).permit(:first_name, :last_name)
   end
 
 end

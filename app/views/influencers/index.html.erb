@@ -2,6 +2,7 @@
 
 <ul>
   <% @influencers.each do |influencer| %>
-    <li><%= influencer.name %></li>
+    <li><%= influencer.first_name %></li>
+    <li><%= influencer.last_name %></li>
   <% end %>
 </ul>
