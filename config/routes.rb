@@ -9,4 +9,16 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  resources :collaborations, only: [:index, :new, :create, :show] do
+    resources :submissions, only: [:create, :new]
+  end
+
+  resources :submissions, only: [:index, :edit, :update, :destroy]
+
+  namespace :brand do
+    resources :collaborations do
+      resources :submissions, only: :index
+    end
+  end
 end
