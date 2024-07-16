@@ -1,0 +1,8 @@
+<h1>Influencers</h1>
+
+<ul>
+  <% @influencers.each do |influencer| %>
+    <li><%= influencer.first_name %></li>
+    <li><%= influencer.last_name %></li>
+  <% end %>
+</ul>
