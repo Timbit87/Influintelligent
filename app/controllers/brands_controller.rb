@@ -1,10 +1,10 @@
 class BrandsController < ApplicationController
   def new
-    @brand = Brand.new
+    @brand = User.brand.new
   end
 
   def create
-    @brand = Brand.new(brand_params)
+    @brand = User.brand.new(brand_params)
     if @brand.save
       redirect_to brand_path(@brand)
     else
