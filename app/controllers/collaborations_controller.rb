@@ -3,6 +3,10 @@ class CollaborationsController < ApplicationController
     @collaboration = Collaboration.new
   end
 
+  def index
+    @collaborations = Collaboration.all
+  end
+
   def create
     @collaboration = Collaboration.new(collaboration_params)
     @brand = Brand.find(params[:brand_id])
