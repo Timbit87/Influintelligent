@@ -9,7 +9,8 @@ class CollaborationsController < ApplicationController
 
   def create
     @collaboration = Collaboration.new(collaboration_params)
-    @brand = Brand.find(params[:brand_id])
+    @brand = User.brand.find(params[:brand_id])
+    @brand.collaboration = @brand
     if @collaboration.save
       redirect_to collaboration_path(@collaboration)
     else

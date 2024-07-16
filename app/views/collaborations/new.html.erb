@@ -1,0 +1,10 @@
+<h1>Create a new collaboration</h1>
+
+<%= simple_form_for @collaboration do |f|  %>
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.input :category %>
+  <%= f.input :start_date %>
+  <%= f.input :end_date %>
+  <%= f.button :submit %>
+<% end %>
