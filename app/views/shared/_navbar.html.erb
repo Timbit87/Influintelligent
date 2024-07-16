@@ -15,11 +15,13 @@
           </a>
           <ul class="dropdown-menu">
             <li><hr class="dropdown-divider"></li>
-            <%= link_to %>
             <% if user_signed_in? %>
+              <% if current_user.brand? %>
+                <%= link_to 'View Brand', brand_path(current_user), class:"dropdown-item" %>
+              <% end %>
               <%= link_to "Exit", destroy_user_session_path, data: { turbo_method: :delete }, class: "dropdown-item" %>
             <% else %>
-              <%= link_to "Sign In", new_user_session_path, class:"dropdown-item"%>
+              <%= link_to "Sign In", new_user_session_path, class:"dropdown-item" %>
             <% end %>
           </ul>
         </li>

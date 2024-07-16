@@ -1,2 +1,20 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container">
+  <h1>Home Page</h1>
+  <% if user_signed_in? %>
+    <div>
+      <p>Welcome <%= current_user.first_name %></p>
+      <% if current_user.brand? %>
+        <%= link_to 'Go to your profile', brand_path(current_user) %>
+      <% end %>
+    </div>
+  <% else %>
+    <div>
+      <p>Do you havce an account?</p>
+      <%= link_to 'Sign In', new_user_session_path %>
+    </div>
+    <div class="mt-4">
+      <p>New here?</p>
+      <%= link_to 'Register', new_user_registration_path %>
+    </div>
+  <% end %>
+</div>
