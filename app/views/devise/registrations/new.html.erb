@@ -1,0 +1,43 @@
+<div class="container w-100">
+  <div class="col-md-10 d-flex justify-content-center align-items-center">
+    <div class="card">
+      <div class="card-header">
+        <%= image_tag ("logo-example.png")%>
+      </div>
+      <div class="card-body">
+        <div class="form-login">
+          <h3 class="text-center">Create an Account</h3>
+          <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: false }) do |f| %>
+            <div class="form-inputs">
+              <%= f.input :first_name, label: "First Name",
+                        required: true,
+                        autofocus: true,
+                        input_html: { class: "input label "} %>
+              <%= f.input :last_name, label: "Last Name",
+                        required: true,
+                        autofocus: true,
+                        input_html: { class: "input label "} %>
+              <%= f.input :email, label: "E-mail",
+                        required: true,
+                        autofocus: true,
+                        input_html: { class: "input label "} %>
+              <%= f.input :password, label: "Password",
+                        required: true,
+                        autofocus: true,
+                        input_html: { class: "input label "} %>
+              <%= f.input :password_confirmation, label: "Password Confirmation",
+                        required: true,
+                        autofocus: true,
+                        input_html: { class: "input label "} %>
+              <div class="form-check">
+                <%= f.check_box :brand, class: 'form-check-input' %>
+                <%= f.label :brand, "I am a brand", class: 'form-check-label' %>
+              </div>
+            </div>
+            <div class="form-actions form-entrar d-flex align-items-center justify-content-center">
+              <%= f.button :submit, "Sign up", class: "btn btn-primary" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
