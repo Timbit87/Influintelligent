@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :influencers, only: [:show, :edit, :update, :destroy]
   
   resources :collaborations, only: [:index, :new, :create, :show] do
-    resources :submissions, only: [:create, :new]
+    resources :submissions
   end
   
   resources :submissions, only: [:index, :edit, :update, :destroy]

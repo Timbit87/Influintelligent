@@ -9,7 +9,9 @@
     <%= javascript_importmap_tags %>
   </head>
   <body>
-    <%= render 'shared/navbar' %>
-    <%= yield %>
+    <%= render 'shared/sidebar' %>
+    <div class="content">
+      <%= yield %>
+    </div>
   </body>
 </html>
