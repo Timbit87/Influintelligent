@@ -1,0 +1,48 @@
+<div class="col-md-4 mb-4">
+  <div class="collaboration-card">
+    <div class="d-flex justify-content-between">
+      <h4 class="col-md-9"><%= collaboration.title %></h4>
+      <div class="row m-0 p-0 d-flex">
+        <small class="col-md m-0 p-0 text-end">End Date
+          <br>
+          <%= collaboration.end_date %></small>
+      </div>
+    </div>
+    <div class="price d-flex align-items-center">
+      <p>$</p>
+      <p class="align-items-center ms-2"><%= collaboration.price %></p>
+    </div>
+    <div class="description mt-4 d-flex pe-2">
+      <i class="fa-solid fa-quote-left me-2"></i>
+      <div class="text-truncate">
+        <%= collaboration.description %>
+      </div>
+      <div class="fade-overlay"></div>
+    </div>
+    <div class="tags mt-2">
+      <% collaboration.category.each do |category| %>
+        <%= link_to category_collaborations_path(category) do %>
+          <span class="tag"><%= category %></span>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="mt-4 created_by">
+      <p>Created by:</p>
+      <% if collaboration.user.present? %>
+        <%= link_to brand_path(collaboration.user) do %>
+          <% if collaboration.user.avatar.present? %>
+            <%= image_tag collaboration.user.avatar, class: "rounded-circle me-2 avatar-photo" %>
+          <% else %>
+            <%= image_tag 'user-photo.png', class: "rounded-circle me-2 avatar-photo" %>
+          <% end %>
+          <%= collaboration.user.first_name %>
+        <% end %>
+      <% else %>
+        <p>Unknown</p>
+      <% end %>
+    </div>
+    <div class="see-more-link mt-2 d-flex justify-content-end card-button">
+      <%= link_to 'See More', collaboration_path(collaboration) %>
+    </div>
+  </div>
+</div>

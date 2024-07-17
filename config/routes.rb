@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   resources :collaborations, only: [:index, :new, :create, :show] do
     resources :submissions
   end
+
+  get 'collaborations/category/:category', to: 'collaborations#category', as: 'category_collaborations'
   
   resources :submissions, only: [:index, :edit, :update, :destroy]
   

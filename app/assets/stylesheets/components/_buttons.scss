@@ -1,0 +1,25 @@
+.btn-secondary-sm {
+  background: $gray;
+  border-radius: 8px;
+  color: #fff;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  transition: background 0.3s;
+
+  &:hover {
+    background: $gray-hover;
+  }
+}
+
+// COLLABORATION CARD BUTTON 
+.card-button a {
+  color: #fff;
+  background: $primary-yellow;
+  padding: 0.5rem 1rem;
+  border-radius: 24px;
+  transition: background 0.3s;
+
+  &:hover {
+    background: $yellow-hover;
+  }
+}
