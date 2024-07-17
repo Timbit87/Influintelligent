@@ -1,7 +1,14 @@
 <div class="row">
   <div class="col-md-12 col-lg-3 order-lg-2 order-md-2 mt-4">
-    <div>
+    <div class="search">
       <h3>Search by:</h3>
+      <div class="tags d-flex flex-wrap">
+        <% @categories.each do |category| %>
+          <%= link_to category_collaborations_path(category) do %>
+            <div class="tag m-2"><%= category %></div>
+          <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
   <div class="col-md-12 col-lg order-lg-1 order-md-1 mt-4">
