@@ -1,40 +1,29 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[show, edit, update, destroy]
-  # this is influencers controller
+  before_action :set_influencer, only: %i[show edit update destroy]
 
   def index
-    @influencers = User.where(brand: true)
-    @brands = User.where(brand: true)
-  end
-
-  def new
-    @user = User.new
-  end
-
-  def create
-    @user = User.new(user_params)
-    if @user.save
-      redirect_to user_path(@user)
-    else
-      render :new
-    end
+    @influencers = User.influencer.all
   end
 
   def show
-    if @user.brand?
-      render 'brands/show'
-    else
-      render 'influencers/show'
-    end
+    @influencers = User.influencer.all
+
   end
 
   def edit
   end
 
+  def update
+  end
+
+  def destroy
+    @influencer.destroy
+  end
+
   private
 
-  def set_user
-    @user = User.find(params[:id])
+  def set_influencer
+    @influencer = User.influencer.find(params[:id])
   end
 
   def user_params

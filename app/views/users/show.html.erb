@@ -1,9 +1,10 @@
-
+<h1>this is /show</h1>
+<p>needds to show each influencer</p>
 
 <p><strong>Influencers</strong></p>
 
 <ul>
-  <% @user.influencers.each do |influencer| %>
+  <% @influencers.each do |influencer| %>
     <li><%= influencer.first_name %></li>
     <li><%= influencer.last_name %></li>
     <li><%= influencer.address %></li>
