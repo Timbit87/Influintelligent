@@ -1,20 +1,7 @@
 class CollaborationsController < ApplicationController
-  def new
-    @collaboration = Collaboration.new
-  end
 
   def index
     @collaborations = Collaboration.all
-  end
-
-  def create
-    @collaboration = Collaboration.new(collaboration_params)
-    @brand = Brand.find(params[:brand_id])
-    if @collaboration.save
-      redirect_to collaboration_path(@collaboration)
-    else
-      render :new, status: :unprocessable_entity
-    end
   end
 
   def collaboration_params
