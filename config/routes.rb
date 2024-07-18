@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   devise_for :users
+  resources :users
 
   resources :collaborations, only: [:index, :new, :create, :show] do
     resources :submissions, only: :create
