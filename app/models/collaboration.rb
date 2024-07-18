@@ -1,5 +1,7 @@
 class Collaboration < ApplicationRecord
   belongs_to :user
+  has_many :submissions
+
   before_save :capitalize_title
 
   validate :user_brand
