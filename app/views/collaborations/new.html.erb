@@ -1,0 +1,25 @@
+<div class="container">
+  <%= simple_form_for @collaboration do |f| %>
+    <%= f.input :title %>
+    <%= f.input :price %>
+    <%= f.input :description %>
+    <div class="d-flex">
+      <div class="col-md-6 me-2">
+        <%= f.input :start_date, as: :string, input_html: { data: { controller: 'datepicker' } } %>
+      </div>
+      <div class="col-md ms-2">
+        <%= f.input :end_date, as: :string, input_html: { data: { controller: 'datepicker' } } %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :category %><br>
+      <% ['Fashion', 'Beauty', 'Lifestyle', 'Travel', 'Food', 'Fitness', 'Tech', 'Art', 'Music', 'Sports'].each do |category| %>
+        <div class="form-check form-check-inline mt-2">
+          <%= f.check_box :category, { multiple: true, class: 'form-check-input' }, category, nil %>
+          <%= f.label :category, category, class: 'form-check-label' %>
+        </div>
+      <% end %>
+    </div>
+    <%= f.submit class: "mt-4"%>
+  <% end %>
+</div>
