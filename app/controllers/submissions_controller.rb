@@ -12,6 +12,7 @@ class SubmissionsController < ApplicationController
   def create
     @submission = Submission.new(params[:submission])
     @submission.collaboration = @collaboration
+    @submission.user = current_user
     @submission.save
     redirect_to collaboration_path(@collaboration)
   end
