@@ -1,20 +1,23 @@
 <div class="container">
-  <h1>Home Page</h1>
+  <div class="card" style="width 18rem;">
+    <div class="title-bar">
+      <h1 class="m-4 text-center display-1 carousel-caption">Welcome to Influintelligent</h1>
+  <%= image_tag ("influencer.jpg"), style: 'width:100%' %>
+  </div>
   <% if user_signed_in? %>
-    <div>
+    <div class="p-2 card-body">
       <p>Welcome <%= current_user.first_name %></p>
       <% if current_user.brand? %>
         <%= link_to 'Go to your profile', brand_path(current_user) %>
       <% end %>
     </div>
   <% else %>
-    <div>
-      <p>Do you havce an account?</p>
-      <%= link_to 'Sign In', new_user_session_path %>
-    </div>
-    <div class="mt-4">
-      <p>New here?</p>
-      <%= link_to 'Register', new_user_registration_path %>
+    <div class="p-2 card-body">
+      <h3>Create an account</h3>
+      <%= link_to 'Register', new_user_registration_path, class: "btn btn-primary mb-2" %>
+      <p>Already a member?</p>
+      <%= link_to 'Log in here', new_user_session_path, class: "btn btn-primary mb-2" %>
     </div>
   <% end %>
+  </div>
 </div>
