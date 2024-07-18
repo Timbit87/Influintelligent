@@ -11,7 +11,7 @@ class SubmissionsController < ApplicationController
   # the new submission form is on the colab show page
   def create
     @submission = Submission.new(params[:submission])
-    @submission.collaboration = @submission
+    @submission.collaboration = @collaboration
     @submission.save
     redirect_to collaboration_path(@collaboration)
   end
