@@ -1,22 +1,30 @@
 class CollaborationsController < ApplicationController
-  def new
-    @collaboration = Collaboration.new
-  end
 
   def index
     @collaborations = Collaboration.all
   end
 
+  def show
+    @collaboration = Collaboration.find(params[:id])
+    @submission = Submission.new
+  end
+
+  def new
+    @collaboration = Collaboration.new
+  end
+
   def create
     @collaboration = Collaboration.new(collaboration_params)
-    @brand = Brand.find(params[:brand_id])
+    @collaboration.user_id = current_user.id
     if @collaboration.save
-      redirect_to collaboration_path(@collaboration)
+      redirect_to @collaboration
     else
-      render :new, status: :unprocessable_entity
+      render :new
     end
   end
 
+  private
+  
   def collaboration_params
     params.require(:collaboration).permit(:title, :description, :price, :category, :start_date, :end_date)
   end

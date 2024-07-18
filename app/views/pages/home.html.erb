@@ -8,7 +8,7 @@
     <div class="p-2 card-body">
       <p>Welcome <%= current_user.first_name %></p>
       <% if current_user.brand? %>
-        <%= link_to 'Go to your profile', brand_path(current_user) %>
+        <%= link_to 'Go to your profile', user_path(current_user) %>
       <% end %>
     </div>
   <% else %>

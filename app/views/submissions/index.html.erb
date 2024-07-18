@@ -1,0 +1,8 @@
+<h1>Submission index page</h1>
+<p>As a influencer, I can see all my submissions</p>
+
+<ul>
+  <% @submissions.each do |submission| %>
+    <li><%= link_to @collaboration.name, collaboration_path(@collaboration) %></li>
+  <% end %>
+</ul>
