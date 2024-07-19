@@ -16,7 +16,7 @@ class SubmissionsController < ApplicationController
     if @submission.save
       flash[:notice] = "Submission was successfully created."
     else
-      flash[:alert] = "There was an error creating the submission."
+      flash[:alert] = "There was an error creating the submission, please refresh the page and try again."
     end
     redirect_to collaboration_path(@collaboration)
   end
