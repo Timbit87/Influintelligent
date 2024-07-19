@@ -8,11 +8,12 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
+Collaboration.destroy_all
 User.destroy_all
 
 puts 'Creating brands.. ' 
 
-User.create!(
+brand1 =  User.create!(
   email: 'brand1@mail.com',
   password: 'password',
   password_confirmation: 'password',
@@ -25,7 +26,7 @@ User.create!(
   about: Faker::Lorem.paragraph,
   tags: [Faker::Lorem.word, Faker::Lorem.word]
 )
-User.create!(
+brand2 =  User.create!(
   email: 'brand2@mail.com',
   password: 'password',
   password_confirmation: 'password',
@@ -70,3 +71,23 @@ User.create!(
 )
 
 puts 'Brands and Influencers created!'
+
+puts 'Creating collaborations...'
+
+category = ['Fashion', 'Beauty', 'Lifestyle', 'Travel', 'Food', 'Fitness', 'Tech', 'Art', 'Music', 'Sports']
+
+brands = [brand1, brand2]
+
+10.times do
+  Collaboration.create!(
+    title: Faker::Marketing.buzzwords,
+    description: Faker::Lorem.paragraph(sentence_count: 20),
+    price: Faker::Commerce.price(range: 10.0..500.0),
+    category: category.sample(3),
+    start_date: Faker::Date.between(from: '2024-07-01', to: '2024-12-31'),
+    end_date: Faker::Date.between(from: '2024-08-01', to: '2025-01-31'),
+    user_id: brands.sample.id
+  )
+end
+
+puts 'Collaborations created successfully!'
