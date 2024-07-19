@@ -1,0 +1,73 @@
+.sidebar-wrapper {
+  width: 280px;
+  margin: 0.5rem;
+
+  .sidebar {
+    width: 280px;
+    height: calc(100vh - 1rem);
+    position: fixed;
+    background: $primary-blue;
+    border-radius: 12px;
+    padding: 1rem;
+    box-sizing: border-box;
+
+    span {
+      color: #fff;
+    }
+
+    .nav-pills .nav-link.active {
+      background-color: $primary-yellow;
+      border-radius: 24px;
+    }
+
+    li {
+      height: 3rem;
+    }
+
+    li a {
+      color: #fff;
+      font-weight: bold;
+
+    }
+
+    i {
+      color: #fff;
+      font-size: 1rem;
+      width: 1.5rem;
+    }
+
+    .dropdown {
+      .dropdown-item {
+        color: $black;
+        font-weight: normal;
+      }
+
+      .link-white {
+        color: #fff;
+      }
+
+      strong {
+        color: #fff;
+      }
+    }
+
+    .avatar-photo {
+      width: 32px;
+      height: 32px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar-wrapper {
+    width: 80px;
+  }
+
+  .sidebar-wrapper .sidebar {
+    width: 80px;
+  }
+
+  .sidebar-wrapper .sidebar i {
+    width: 1rem;
+  }
+}
