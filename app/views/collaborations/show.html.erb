@@ -1,3 +1,57 @@
-<h1>Collaboriation show</h1>
-
-<%=  render 'submissions/form' %>
+<div class="container">
+  <h1>Detais about collaboration of <strong><%= @collaboration.user.first_name %></strong></h1>
+  <div class="col-md-8 mb-4">
+    <div class="collaboration-show-card">
+      <div class="banner-card" style="background-image: url('<%= asset_path('banner-card-collaboration.jpg')%>')">
+        <div class="banner-content">
+          <div class="d-flex justify-content-between">
+            <h4 class="col-md-9"><%= @collaboration.title %></h4>
+            <div class="row m-2 p-0 d-flex">
+              <small class="col-md m-0 p-0 text-end">End Date
+                <br>
+                <%= @collaboration.end_date %></small>
+            </div>
+          </div>
+          <div class="price d-flex align-items-center mt-4">
+            <p>$</p>
+            <p class="align-items-center ms-2"><%= @collaboration.price %></p>
+          </div>
+        </div>
+      </div>
+      <div class="description-show mt-4 pe-2">
+        <p>Description:</p>
+        <div class="d-flex">
+          <i class="fa-solid fa-quote-left me-2"></i>
+          <%= @collaboration.description %>
+        </div>
+      </div>
+      <div class="tags mt-2">
+      </div>
+      <div class="mt-4 created_by">
+        <p>Created by:</p>
+        <% if @collaboration.user.present? %>
+          <%= link_to user_path(@collaboration.user) do %>
+            <% if @collaboration.user.avatar.present? %>
+              <%= image_tag @collaboration.user.avatar, class: "rounded-circle me-2 avatar-photo" %>
+            <% else %>
+              <%= image_tag 'user-photo.png', class: "rounded-circle me-2 avatar-photo" %>
+            <% end %>
+            <%= @collaboration.user.first_name %>
+          <% end %>
+        <% else %>
+          <p>Unknown</p>
+        <% end %>
+      </div>
+      <div class="see-more-link mt-2 d-flex justify-content-end card-button" id="btn-form-classList">
+        <%= link_to '#', id: 'submit-for-collaboration' do %>
+          Submit For Collaboration
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <div class="submission-form d-none" id='submission-form'>
+      <%= render 'submissions/form', collaboration: @collaboration %>
+    </div>
+  </div>
+</div>
