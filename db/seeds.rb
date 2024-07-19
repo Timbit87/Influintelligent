@@ -79,7 +79,7 @@ mizuno = Collaboration.create!(
   title: "Mizuno Marketing",
   description: "To collab with Mizuno",
   price: 100000,
-  category: "sports",
+  category: ["sports"],
   start_date: DateTime.new(2009,9,1,17),
   end_date: DateTime.new(2009,9,1,17),
   user: brand1
@@ -89,7 +89,7 @@ domino = Collaboration.create!(
   title: "Domino Pizza Campaign",
   description: "To collab with Domino",
   price: 200000,
-  category: "food",
+  category: ["food"],
   start_date: DateTime.new(2009,9,1,17),
   end_date: DateTime.new(2009,9,1,17),
   user: brand2
