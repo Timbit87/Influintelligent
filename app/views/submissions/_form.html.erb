@@ -1,3 +1,7 @@
-<%= simple_form_for [@collaboration, @submission] do |f| %>
-  <%= f.button :submit %>
-<% end %>
+<div class="container">
+  <h4 class="text-center">You're creating a sumission for collaboration: <strong><%= @collaboration.title %></strong></h4>
+  <p class="text-center mt-4">Click here for create a submission:</p>
+  <%= simple_form_for [@collaboration, @submission] do |f| %>
+    <div class="text-center submit-form"><%= f.button :submit %></div>
+  <% end %>
+</div>

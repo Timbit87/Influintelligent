@@ -13,7 +13,11 @@ class SubmissionsController < ApplicationController
     @submission = Submission.new(params[:submission])
     @submission.collaboration = @collaboration
     @submission.user = current_user
-    @submission.save
+    if @submission.save
+      flash[:notice] = "Submission was successfully created."
+    else
+      flash[:alert] = "There was an error creating the submission."
+    end
     redirect_to collaboration_path(@collaboration)
   end
 

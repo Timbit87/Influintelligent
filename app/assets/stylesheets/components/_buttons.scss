@@ -13,6 +13,7 @@
 
 // COLLABORATION CARD BUTTON 
 .card-button a {
+  text-decoration: none;
   color: #fff;
   background: $primary-yellow;
   padding: 0.5rem 1rem;
@@ -21,5 +22,48 @@
 
   &:hover {
     background: $yellow-hover;
+  }
+}
+
+// DISABLE BTN
+
+.disable-btn-form a {
+  background: $gray;
+  border-radius: 24px;
+  color: #fff;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  transition: background 0.3s;
+
+  &:hover {
+    background: $gray-hover;
+  }
+}
+
+//SUBMIT FORM BTN
+
+
+.submit-form input {
+  text-decoration: none;
+  color: #fff;
+  background: $primary-yellow;
+  padding: 0.5rem 1rem;
+  border-radius: 24px;
+  transition: background 0.3s;
+  border: none;
+  outline: none;
+
+  &:hover {
+    background: $yellow-hover;
+    color: #fff;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:active {
+    outline: none;
+    box-shadow: none; 
   }
 }
