@@ -1,8 +1,61 @@
-<h1>Submission index page</h1>
-<p>As a influencer, I can see all my submissions</p>
-
-<ul>
-  <% @submissions.each do |submission| %>
-    <li><%= link_to submission.collaboration.title, collaboration_path(submission.collaboration) %></li>
-  <% end %>
-</ul>
+<div class="container mt-4">
+  <h1>Hello <strong><%= current_user.first_name %></strong></h1>
+  <h3 class="my-4">These are your current collaborations submissions:</h3>
+  <div class="submissions-table">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Collaboration</th>
+          <% if current_user.brand?%>
+            <th scope="col">Influencer</th>
+          <% else %>
+            <th scope="col">Brand</th>
+          <% end %>
+          <th scope="col">Start Date</th>
+          <th scope="col">End Date</th>
+          <th scope="col">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- submissions inside a collab -->
+        <% if @collaboration %>
+          <% @submissions.each_with_index do |submission, index| %>
+            <tr>
+              <th scope="row"><%= index + 1 %></th>
+              <td>
+                <%= link_to @collaboration.title, collaboration_path(@collaboration) %>
+              </td>
+              <td>
+                <%= link_to @collaboration.user.first_name, user_path(@collaboration.user) %>
+              </td>
+              <td><%= @collaboration.start_date %></td>
+              <td><%= @collaboration.end_date %></td>
+              <td><%= submission.status.capitalize %></td>
+            </tr>
+          <% end %>
+          <!-- submissions associated for users -->
+        <% else @user %>
+          <% @submissions.each_with_index do |submission, index| %>
+            <tr>
+              <th scope="row"><%= index + 1 %></th>
+              <td>
+                <%= link_to submission.collaboration.title, collaboration_path(submission.collaboration) %>
+              </td>
+              <td>
+                <% if @user.brand? %>
+                  <%= link_to submission.user.first_name, user_path(submission.user) %>
+                <% else %>
+                  <%= link_to submission.collaboration.user.first_name, user_path(submission.collaboration.user) %>
+                <% end %>
+              </td>
+              <td><%= submission.collaboration.start_date %></td>
+              <td><%= submission.collaboration.end_date %></td>
+              <td><%= submission.status.capitalize %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
