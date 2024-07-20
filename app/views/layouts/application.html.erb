@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   </head>
   <body>
+    <%= render 'components/flash_messages' %>
+    <%= render 'shared/navbar' %>
+    <%= yield %>
     <%= render 'shared/sidebar' %>
     <div class="content">
       <%= yield %>
