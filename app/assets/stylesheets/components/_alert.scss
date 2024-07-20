@@ -2,13 +2,14 @@
   position: fixed;
   bottom: 16px;
   right: 16px;
-  top: 50%;
+  top: 90%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 80%;
   max-width: 600px;
   z-index: 1000;
   text-align: center;
+  pointer-events: none;
 }
 
 .alert {
@@ -16,6 +17,7 @@
   margin-bottom: 20px;
   border: 1px solid transparent;
   border-radius: 4px;
+  pointer-events: all;
 
   &.alert-success {
     color: #3c763d;
