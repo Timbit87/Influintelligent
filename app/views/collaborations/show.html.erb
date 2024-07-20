@@ -42,16 +42,11 @@
           <p>Unknown</p>
         <% end %>
       </div>
-      <div class="see-more-link mt-2 d-flex justify-content-end card-button" id="btn-form-classList">
-        <%= link_to '#', id: 'submit-for-collaboration' do %>
-          Submit For Collaboration
-        <% end %>
+        <div class="see-more-link mt-2 d-flex justify-content-end card-button" id="btn-form-classList">
+            <a><%= render 'submissions/form' %></a>
+        </div>
+      <div class="col-md-8">
       </div>
-    </div>
-  </div>
-  <div class="col-md-8">
-    <div class="submission-form d-none" id='submission-form'>
-      <%= render 'submissions/form' %>
     </div>
   </div>
 </div>
