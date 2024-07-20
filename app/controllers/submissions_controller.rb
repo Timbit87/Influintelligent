@@ -15,6 +15,7 @@ class SubmissionsController < ApplicationController
     @submission.user = current_user
     @submission.save
     redirect_to collaboration_path(@collaboration)
+    # TODO: Steven - add if else conditional
   end
 
   private
