@@ -13,5 +13,9 @@
     <%= render 'components/flash_messages' %>
     <%= render 'shared/navbar' %>
     <%= yield %>
+    <%= render 'shared/sidebar' %>
+    <div class="content">
+      <%= yield %>
+    </div>
   </body>
 </html>
