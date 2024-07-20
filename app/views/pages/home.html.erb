@@ -1,23 +1,25 @@
 <div class="container">
   <div class="card" style="width 18rem;">
-    <div class="title-bar">
       <h1 class="m-4 text-center display-1 carousel-caption">Welcome to Influintelligent</h1>
-  <%= image_tag ("influencer.jpg"), style: 'width:100%' %>
+        <%= cl_image_tag("influencer_2_yxumb3") %>
   </div>
+
   <% if user_signed_in? %>
     <div class="p-2 card-body">
       <h2>Welcome <%= current_user.first_name.capitalize %>!</h2>
       <h3>Here are some recently added collaborations:</h3>
+    </div>div
       <div class="d-flex flex-row flex-nowrap overflow-auto">
-      <% @collaborations.sort_by{ |i| - i.created_at.to_i }.first(5).each  do |collaboration| %>
-        <%= render 'components/landing_card', collaboration: collaboration %>
-      <% end %>
+        <% @collaborations.sort_by{ |i| - i.created_at.to_i }.first(5).each  do |collaboration| %>
+          <%= render 'components/landing_card', collaboration: collaboration %>
+        <% end %>
       </div>
+
       <% if current_user.brand? %>
         <%= link_to 'Go to your profile', user_path(current_user) %>
       <% end %>
-    </div>
   <% else %>
+
     <div class="p-2 card-body">
       <h3>Create an account</h3>
       <%= link_to 'Register', new_user_registration_path, class: "btn btn-primary mb-2" %>
@@ -25,5 +27,5 @@
       <%= link_to 'Log in here', new_user_session_path, class: "btn btn-primary mb-2" %>
     </div>
   <% end %>
-  </div>
+
 </div>
