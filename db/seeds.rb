@@ -128,7 +128,7 @@ puts 'Creating Collab.....'
 
 mizuno = Collaboration.create!(
   title: "Mizuno Marketing",
-  description: "We manufactured brand new functional sneaker and looking for infliencer to work with!",
+  description: "We have manufactured brand new functional sneakers and we're looking for an infliencer to work with!",
   price: 100,
   category: ["sports"],
   start_date: DateTime.new(2024,7,1,17),
@@ -138,7 +138,7 @@ mizuno = Collaboration.create!(
 
 domino = Collaboration.create!(
   title: "Domino Pizza Campaign",
-  description: "Looking for partner to work with out new summer pizza campaign!",
+  description: "Looking for partner to work with our new summer pizza campaign!",
   price: 200,
   category: ["food"],
   start_date: DateTime.new(2024,8,1,17),
@@ -148,7 +148,7 @@ domino = Collaboration.create!(
 
 sanrio = Collaboration.create!(
   title: "Sanrio campaign",
-  description: "Who watns to with with hello kitty!?",
+  description: "Who wants to with with Hello Kitty!?",
   price: 300,
   category: ["toy"],
   start_date: DateTime.new(2024,8,1,17),
@@ -158,7 +158,7 @@ sanrio = Collaboration.create!(
 
 sega = Collaboration.create!(
   title: "Sega campaign",
-  description: "developed new game, want to find partner to work with for campaign",
+  description: "We developed a new game and want to find a partner to work with for our campaign",
   price: 500,
   category: ["game"],
   start_date: DateTime.new(2024,8,1,17),
@@ -178,7 +178,7 @@ dell = Collaboration.create!(
 
 kokuyo = Collaboration.create!(
   title: "Kokuyo campaign",
-  description: "We created new awesome pencil, looking for influencer who has background",
+  description: "We created new awesome pencils. We are looking for an influencer who has loves pencils!",
   price: 100,
   category: ["stationary"],
   start_date: DateTime.new(2024,8,1,17),
