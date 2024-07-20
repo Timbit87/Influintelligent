@@ -3,6 +3,6 @@
 
 <ul>
   <% @submissions.each do |submission| %>
-    <li><%= link_to @collaboration.name, collaboration_path(@collaboration) %></li>
+    <li><%= link_to @collaboration.title, collaboration_path(@collaboration) %></li>
   <% end %>
 </ul>
