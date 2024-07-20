@@ -6,7 +6,9 @@
   </div>
   <% if user_signed_in? %>
     <div class="p-2 card-body">
-      <p>Welcome <%= current_user.first_name %></p>
+      <h3>Welcome <%= current_user.first_name.capitalize %></h3>
+      <%# <% if @submissions.exists? %>
+      <%# <% end %>
       <% if current_user.brand? %>
         <%= link_to 'Go to your profile', user_path(current_user) %>
       <% end %>
