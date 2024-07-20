@@ -1,21 +1,27 @@
 class SubmissionsController < ApplicationController
   before_action :set_collaboration, only: :create
+  before_action :set_user, only: [:index]
 
-  #As a influencer, I can see all my submissions
   def index
-    @submissions = Submission.all
+    if @user
+      @submissions = @user.submissions
+    elsif params[:collaboration_id]
+      @collaboration = Collaboration.find(params[:collaboration_id])
+      @submissions = @collaboration.submissions
+    else
+      @submissions = Submission.all
+    end
   end
 
-  #As a user i can create a submission
-  # /collaborations/:collaboration_id/submissions
-  # the new submission form is on the colab show page
   def create
     @submission = Submission.new(params[:submission])
     @submission.collaboration = @collaboration
     @submission.user = current_user
-    @submission.save
-    redirect_to collaboration_path(@collaboration)
-    # TODO: Steven - add if else conditional
+    if @submission.save
+      redirect_to collaboration_path(@collaboration)
+    else
+      render 'collaborations/show'
+    end
   end
 
   private
@@ -24,7 +30,7 @@ class SubmissionsController < ApplicationController
     @collaboration = Collaboration.find(params[:collaboration_id])
   end
 
-  # WEEK 2 prority "As a brand I approve collaboration applicants"
-  # def update
-  # end
+  def set_user
+    @user = User.find(params[:user_id]) if params[:user_id]
+  end
 end

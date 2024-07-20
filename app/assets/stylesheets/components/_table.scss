@@ -1,0 +1,16 @@
+.submissions-table {
+  table {
+    th {
+      color: $gray-hover;
+    }
+
+    td a {
+      text-decoration: none;
+      transition: color 0.2s;
+
+      &:hover {
+        color: $yellow-hover;
+      }
+    }
+  }
+}
