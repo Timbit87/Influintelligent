@@ -1,4 +1,6 @@
 class CollaborationsController < ApplicationController
+  before_action :set_collaboration, only: [:show]
+  before_action :authenticate_brand!, only: [:create, :new]
 
   def index
     @collaborations = Collaboration.all
@@ -26,6 +28,16 @@ class CollaborationsController < ApplicationController
   private
   
   def collaboration_params
-    params.require(:collaboration).permit(:title, :description, :price, :category, :start_date, :end_date)
+    params.require(:collaboration).permit(:title, :description, :price, :start_date, :end_date, category: [])
+  end
+
+  def set_collaboration
+    @collaboration = Collaboration.find(params[:id])
+  end
+
+  def authenticate_brand!
+    unless current_user.brand?
+      redirect_to root_path, alert: "Only brands can create collaborations."
+    end
   end
 end
