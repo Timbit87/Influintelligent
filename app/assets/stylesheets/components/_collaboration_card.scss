@@ -181,4 +181,17 @@
       }
     }
   }
+
+  .fa-pen-to-square {
+    font-size: 1.5rem;
+    background: $yellow;
+    color: #fff;
+    padding: 0.8rem;
+    border-radius: 32px;
+    transition: background 0.3s;
+
+    &:hover {
+      background: $yellow-hover;
+    }
+  }
 }

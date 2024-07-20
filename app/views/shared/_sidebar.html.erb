@@ -26,6 +26,12 @@
               <span class="d-none d-md-inline">New Collaboration</span>
             <% end %>
           </li>
+          <li class="nav-item">
+            <%= link_to my_collaborations_collaborations_path, class: "nav-link #{'active' if current_page?(my_collaborations_collaborations_path)}" do %>
+              <i class="fa-solid fa-plus"></i>
+              <span class="d-none d-md-inline">My Collaborations</span>
+            <% end %>
+          </li>
         <% end %>
         <li class="nav-item">
           <%= link_to collaborations_path, class: "nav-link #{'active' if current_page?(collaborations_path)}" do %>
