@@ -9,8 +9,8 @@
       </div>
     </div>
     <div class="price d-flex align-items-center">
-      <p>$</p>
-      <p class="align-items-center ms-2"><%= collaboration.price %></p>
+      <p>¥</p>
+      <p class="align-items-center ms-2"><%= number_to_currency(collaboration.price, :locale => 'jp') %></p>
     </div>
     <div class="description mt-4 d-flex pe-2">
       <i class="fa-solid fa-quote-left me-2"></i>

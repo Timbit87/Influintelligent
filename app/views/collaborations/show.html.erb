@@ -13,8 +13,8 @@
             </div>
           </div>
           <div class="price d-flex align-items-center mt-4">
-            <p>$</p>
-            <p class="align-items-center ms-2"><%= @collaboration.price %></p>
+            <p>¥</p>
+            <p class="align-items-center ms-2"><%= number_to_currency(collaboration.price, :locale => 'jp') %></p>
           </div>
         </div>
       </div>
