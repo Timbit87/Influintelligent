@@ -28,7 +28,7 @@
           <% if collaboration.user.avatar.present? %>
             <%= image_tag collaboration.user.avatar, class: "rounded-circle me-2 avatar-photo" %>
           <% else %>
-            <%= image_tag 'user-photo.png', class: "rounded-circle me-2 avatar-photo" %>
+            <%= cl_image_tag("user-photo_eayc7e", width: 30, height: 30, gravity: "face", radius: "max", crop: "fill") %>
           <% end %>
           <%= collaboration.user.first_name %>
         <% end %>
