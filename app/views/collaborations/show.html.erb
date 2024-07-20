@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>Detais about collaboration of <strong><%= @collaboration.user.first_name %></strong></h1>
+  <h1>Details about collaboration of <strong><%= @collaboration.user.first_name %></strong></h1>
   <div class="col-md-8 mb-4">
     <div class="collaboration-show-card">
       <div class="banner-card" style="background-image: url('<%= asset_path('banner-card-collaboration.jpg')%>')">
@@ -23,6 +23,7 @@
         <div class="d-flex">
           <i class="fa-solid fa-quote-left me-2"></i>
           <%= @collaboration.description %>
+          <i class="fa-solid fa-quote-right ms-2"></i>
         </div>
       </div>
       <div class="tags mt-2">
