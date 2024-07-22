@@ -19,7 +19,9 @@ class SubmissionsController < ApplicationController
     @submission.user = current_user
     if @submission.save
       redirect_to collaboration_path(@collaboration)
+      flash[:notice] = "Your submission has been sent."
     else
+      flash[:alert] = "There was an error creating the submission."
       render 'collaborations/show'
     end
   end
