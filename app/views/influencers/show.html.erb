@@ -1,16 +1,119 @@
-
-
-<p><strong>Influencers</strong></p>
-
-<ul>
-  <% @user.influencers.each do |influencer| %>
-    <li><%= influencer.first_name %></li>
-    <li><%= influencer.last_name %></li>
-    <li><%= influencer.address %></li>
-    <li><%= influencer.contact %></li>
-    <li><%= influencer.websites %></li>
-    <li><%= influencer.social_links %></li>
-    <li><%= influencer.availability %></li>
-    <li><%= influencer.about %></li>
+<div class="mt-4">
+  <% if user_signed_in? %>
+    <h1>Hello <%= current_user.first_name.capitalize %></h1>
+    <p>Here is your information...</p>
+    <div class="row d-flex align-items-stretch">
+      <div class="col-md-9 d-flex">
+        <div class="profile-container w-100">
+          <div class="d-flex">
+            <div class="col-md-3 d-flex align-items-center justify-content-center">
+              <%= image_tag 'user-photo.png', class: "profile-photo" %>
+            </div>
+            <div class="col-md">
+              <div>
+                <div class="d-flex justify-content-between">
+                  <h4>Profile<br>
+                    <strong>
+                      <% if current_user.brand_name.present? %>
+                        <%= current_user.brand_name.capitalize %>
+                      <% else %>
+                        <%= current_user.first_name.capitalize %>
+                        <%= current_user.last_name.capitalize %>
+                      <% end %>
+                    </strong>
+                  </h4>
+                  <%= link_to edit_user_path(current_user) do %>
+                    <i class="fa-regular fa-pen-to-square" id="edit-icon"></i>
+                  <% end %>
+                </div>
+                <p><strong>About You:<br>
+                  </strong> <%= current_user.about %></p>
+                <p><strong>Email:</strong> <%= current_user.email %></p>
+                <p><strong>Social Links:</strong></p>
+                <% social_icons = {
+                  'facebook' => 'fa-facebook-f',
+                  'twitter' => 'fa-x-twitter',
+                  'linkedin' => 'fa-linkedin-in',
+                  'tik_tok' => 'fa-tiktok',
+                  'instagram' => 'fa-instagram',
+                  'YouTube' => 'fa-youtube'
+                } %>
+                <% if current_user.social_links.present? %>
+                  <% social_icons.each do |platform, icon| %>
+                    <% if current_user.social_links[platform].present? %>
+                      <%= link_to current_user.social_links[platform], target: "_blank" do %>
+                        <i class="fa-brands <%= icon %> me-2"></i>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md d-flex">
+        <div class="submissions-shot-container w-100">
+          <h3>Total Submissions:</h3>
+          <h4>Pending: <strong><%= current_user.submissions.pending.size %></strong></h4>
+          <h4>Confirmed: <strong><%= current_user.submissions.confirmed.size %></strong></h4>
+          <h4>Declined: <strong><%= current_user.submissions.declined.size %></strong></h4>
+          <h4 class="border-b">Canceled: <strong><%= current_user.submissions.cancelled.size %></strong></h4>
+          <div class="d-flex justify-content-between">
+            <h4><strong>Total: <%= current_user.submissions.size %></strong></h4>
+            <%= link_to submissions_path(user_id: current_user.id) do %>
+              <i class="fa-solid fa-bars"></i>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% else %>
+    <p>User is not logged in.</p>
+    <p>Login <%= link_to 'here.', new_user_session_path %></p>
+    <p>Or <%= link_to 'create', new_user_registration_path %> an account</p>
   <% end %>
-</ul>
+</div>
+<div class="collab-show-container my-4">
+  <h3>My Collaborations:</h3>
+  <% if @collaborations.present? %>
+    <% @collaborations_last_3.each do |collaboration| %>
+      <div class="d-flex align-items-center">
+        <div class="icon">
+          <% if collaboration.end_date.present? && collaboration.end_date.past? %>
+            <i class="fa-solid fa-circle"></i>
+          <% else %>
+            <i class="fa-regular fa-circle"></i>
+          <% end %>
+        </div>
+        <div class="collab-box-dashboard w-100">
+          <div class="d-flex">
+            <div class="col-md-6">
+              <p><strong>Collaboration:</strong> <%= collaboration.title %></p>
+              <p><strong>Price:</strong> <%= collaboration.price %></p>
+              <p><strong>Category:</strong> <%= collaboration.category.join(', ') %></p>
+              <p><strong>Start Date:</strong> <%= collaboration.start_date %></p>
+              <p><strong>End Date:</strong> <%= collaboration.end_date %></p>
+            </div>
+            <div class="colab-submissions text-center col-md-4">
+              <span class="span-submissions">Submissions</span>
+              <h4><%= collaboration.submissions.size %></h4>
+            </div>
+            <div class="status-icon-container d-flex flex-column justify-content-between text-end col-md">
+              <% if collaboration.end_date.present? && collaboration.end_date.past? %>
+                <span class="span-green text-center">In Progress</span>
+              <% else %>
+                <span class="span-red text-center">Closed</span>
+              <% end %>
+              <%= link_to collaboration_path(collaboration), class: "text-end" do %>
+                <i class="fa-solid fa-circle-chevron-right text-center"></i>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <p>No collaborations found.</p>
+  <% end %>
+</div>
