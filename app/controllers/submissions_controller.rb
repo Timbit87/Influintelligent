@@ -1,6 +1,7 @@
 class SubmissionsController < ApplicationController
   before_action :set_collaboration, only: :create
   before_action :set_user, only: :index
+  before_action :set_submission, only: :update
 
   def index
     if @user
@@ -26,6 +27,15 @@ class SubmissionsController < ApplicationController
     end
   end
 
+  def update
+    @submission = Submission.find(params[:id])
+    if @submission.update(submission_params)
+      redirect_to @submission, notice: "Submission status was successfully updated."
+    else
+      render :edit
+    end
+  end
+
   private
 
   def set_collaboration
@@ -34,5 +44,13 @@ class SubmissionsController < ApplicationController
 
   def set_user
     @user = current_user
+  end
+
+  def set_submission
+    @submission = Submission.find(params[:id])
+  end
+
+  def submission_params
+    params.require(:submission).permit(:status)
   end
 end
