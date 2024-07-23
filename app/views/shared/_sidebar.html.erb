@@ -42,7 +42,7 @@
         <% if current_user.brand? %>
         <li class="nav-item">
           <%= link_to users_path, class: "nav-link #{'active' if current_page?(users_path)}" do %>
-            <i class="fa-solid fa-file"></i>
+            <i class="fa-solid fa-search"></i>
             <span class="d-none d-md-inline">Search for Influencers</span>
           <% end %>
         </li>
