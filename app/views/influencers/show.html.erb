@@ -1,6 +1,9 @@
+<%# This is the show file for ALL users, brand or influencer alike %>
+
+
 <div class="mt-4">
   <% if user_signed_in? %>
-    <h1>Hello <%= current_user.first_name.capitalize %></h1>
+    <h1>Hello <%= @user.first_name.capitalize %></h1>
     <p>Here is your information...</p>
     <div class="row d-flex align-items-stretch">
       <div class="col-md-9 d-flex">
@@ -14,21 +17,21 @@
                 <div class="d-flex justify-content-between">
                   <h4>Profile<br>
                     <strong>
-                      <% if current_user.brand_name.present? %>
-                        <%= current_user.brand_name.capitalize %>
+                      <% if @user.brand_name.present? %>
+                        <%= @user.brand_name.capitalize %>
                       <% else %>
-                        <%= current_user.first_name.capitalize %>
-                        <%= current_user.last_name.capitalize %>
+                        <%= @user.first_name.capitalize %>
+                        <%= @user.last_name.capitalize %>
                       <% end %>
                     </strong>
                   </h4>
-                  <%= link_to edit_user_path(current_user) do %>
+                  <%= link_to edit_user_path(@user) do %>
                     <i class="fa-regular fa-pen-to-square" id="edit-icon"></i>
                   <% end %>
                 </div>
                 <p><strong>About You:<br>
-                  </strong> <%= current_user.about %></p>
-                <p><strong>Email:</strong> <%= current_user.email %></p>
+                  </strong> <%= @user.about %></p>
+                <p><strong>Email:</strong> <%= @user.email %></p>
                 <p><strong>Social Links:</strong></p>
                 <% social_icons = {
                   'facebook' => 'fa-facebook-f',
@@ -38,10 +41,10 @@
                   'instagram' => 'fa-instagram',
                   'YouTube' => 'fa-youtube'
                 } %>
-                <% if current_user.social_links.present? %>
+                <% if @user.social_links.present? %>
                   <% social_icons.each do |platform, icon| %>
-                    <% if current_user.social_links[platform].present? %>
-                      <%= link_to current_user.social_links[platform], target: "_blank" do %>
+                    <% if @user.social_links[platform].present? %>
+                      <%= link_to @user.social_links[platform], target: "_blank" do %>
                         <i class="fa-brands <%= icon %> me-2"></i>
                       <% end %>
                     <% end %>
@@ -55,13 +58,13 @@
       <div class="col-md d-flex">
         <div class="submissions-shot-container w-100">
           <h3>Total Submissions:</h3>
-          <h4>Pending: <strong><%= current_user.submissions.pending.size %></strong></h4>
-          <h4>Confirmed: <strong><%= current_user.submissions.confirmed.size %></strong></h4>
-          <h4>Declined: <strong><%= current_user.submissions.declined.size %></strong></h4>
-          <h4 class="border-b">Canceled: <strong><%= current_user.submissions.cancelled.size %></strong></h4>
+          <h4>Pending: <strong><%= @user.submissions.pending.size %></strong></h4>
+          <h4>Confirmed: <strong><%= @user.submissions.confirmed.size %></strong></h4>
+          <h4>Declined: <strong><%= @user.submissions.declined.size %></strong></h4>
+          <h4 class="border-b">Canceled: <strong><%= @user.submissions.cancelled.size %></strong></h4>
           <div class="d-flex justify-content-between">
-            <h4><strong>Total: <%= current_user.submissions.size %></strong></h4>
-            <%= link_to submissions_path(user_id: current_user.id) do %>
+            <h4><strong>Total: <%= @user.submissions.size %></strong></h4>
+            <%= link_to submissions_path(user_id: @user.id) do %>
               <i class="fa-solid fa-bars"></i>
             <% end %>
           </div>
