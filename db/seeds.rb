@@ -8,6 +8,8 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
+include ActionView::Helpers::NumberHelper
+
 User.destroy_all
 
 puts 'Creating brands.. '
@@ -129,7 +131,7 @@ puts 'Creating Collab.....'
 mizuno = Collaboration.create!(
   title: "Mizuno Marketing",
   description: "We have manufactured brand new functional sneakers and we're looking for an infliencer to work with!",
-  price: 100,
+  price: 100000,
   category: ["sports"],
   start_date: DateTime.new(2024,7,1,17),
   end_date: DateTime.new(2024,9,1,17),
@@ -139,7 +141,7 @@ mizuno = Collaboration.create!(
 domino = Collaboration.create!(
   title: "Domino Pizza Campaign",
   description: "Looking for partner to work with our new summer pizza campaign!",
-  price: 200,
+  price: 200000,
   category: ["food"],
   start_date: DateTime.new(2024,8,1,17),
   end_date: DateTime.new(2024,10,1,17),
@@ -149,7 +151,7 @@ domino = Collaboration.create!(
 sanrio = Collaboration.create!(
   title: "Sanrio campaign",
   description: "Who wants to with with Hello Kitty!?",
-  price: 300,
+  price: 300000,
   category: ["toy"],
   start_date: DateTime.new(2024,8,1,17),
   end_date: DateTime.new(2024,10,1,17),
@@ -159,7 +161,7 @@ sanrio = Collaboration.create!(
 sega = Collaboration.create!(
   title: "Sega campaign",
   description: "We developed a new game and want to find a partner to work with for our campaign",
-  price: 500,
+  price: 500000,
   category: ["game"],
   start_date: DateTime.new(2024,8,1,17),
   end_date: DateTime.new(2024,10,1,17),
@@ -169,7 +171,7 @@ sega = Collaboration.create!(
 dell = Collaboration.create!(
   title: "Dell campaign",
   description: "Invented new device looking for awesome influencer to promote our device!",
-  price: 600,
+  price: 600000,
   category: ["electronic"],
   start_date: DateTime.new(2024,8,1,17),
   end_date: DateTime.new(2024,10,1,17),
@@ -179,7 +181,7 @@ dell = Collaboration.create!(
 kokuyo = Collaboration.create!(
   title: "Kokuyo campaign",
   description: "We created new awesome pencils. We are looking for an influencer who has loves pencils!",
-  price: 100,
+  price: 100000,
   category: ["stationary"],
   start_date: DateTime.new(2024,8,1,17),
   end_date: DateTime.new(2024,10,1,17),

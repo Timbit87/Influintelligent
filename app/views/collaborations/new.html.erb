@@ -24,3 +24,6 @@
     <%= f.submit class: "mt-4"%>
   <% end %>
 </div>
+<div class="d-flex justify-content-start mt-4 pt-4">
+  <%= link_to 'Back', (request.referrer || collaborations_path), class: "btn-secondary-sm ms-2" %>
+</div>
