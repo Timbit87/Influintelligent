@@ -19,7 +19,12 @@
       </div>
       <div class="fade-overlay"></div>
     </div>
-    <div class="tags mt-2">
+    <div class="tags mt-4">
+      <% collaboration.category.each do |category| %>
+        <%= link_to category_collaborations_path(category) do %>
+          <span class="tag"><%= category %></span>
+        <% end %>
+      <% end %>
     </div>
     <div class="mt-4 created_by">
       <p>Created by:</p>

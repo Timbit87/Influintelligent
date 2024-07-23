@@ -1,6 +1,9 @@
 class CollaborationsController < ApplicationController
   before_action :set_collaboration, only: [:show]
   before_action :authenticate_brand!, only: [:create, :new]
+  before_action :set_category, only: [:index, :category, :new, :edit]
+
+  CATEGORIES = Collaboration::CATEGORIES
 
   def index
     @collaborations = Collaboration.all
@@ -25,6 +28,17 @@ class CollaborationsController < ApplicationController
     end
   end
 
+  def category
+    @category = params[:category]
+    if CATEGORIES.include?(@category)
+      @collaborations = Collaboration.where("category @> ARRAY[?]::varchar[]", @category)
+    else
+      @collaborations = Collaboration.none
+    end
+    @categories = CATEGORIES
+    render :index
+  end
+
   private
 
   def collaboration_params
@@ -33,6 +47,10 @@ class CollaborationsController < ApplicationController
 
   def set_collaboration
     @collaboration = Collaboration.find(params[:id])
+  end
+
+  def set_category
+    @categories = CATEGORIES
   end
 
   def authenticate_brand!
