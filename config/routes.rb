@@ -5,27 +5,23 @@ Rails.application.routes.draw do
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
 
-  # Defines the root path route ("/")
   root to: "pages#home"
 
   devise_for :users
-resources :users
+  resources :users
 
-resources :collaborations, only: [:index, :new, :create, :show] do
-  collection do
-    get 'category/:category', to: 'collaborations#category', as: 'category'
+  resources :collaborations, only: [:index, :new, :create, :show] do
+    collection do
+      get 'category/:category', to: 'collaborations#category', as: 'category'
+    end
+    resources :submissions, only: :create
   end
-  resources :submissions, only: :create
-end
-
 
   resources :submissions, only: [:index, :update]
-  # the accept/reject submission buttons are on the submissions index page
-  # :destroy is not first priority
 
-  namespace :brand do
-    resources :submissions, only: :index
-  end
+  # namespace :brand do
+  #   resources :submissions, only: :index
+  # end
 
   # priority #2 for later
   # resources :users, only: :show do

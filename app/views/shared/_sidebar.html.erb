@@ -35,10 +35,10 @@
         </li>
         <li class="nav-item">
           <% if current_user.brand? %>
-              <%= link_to brand_submissions_path(user_id: current_user.id), class: "nav-link #{'active' if current_page?(submissions_path(user_id: current_user.id))}" do %>
-                <i class="fa-solid fa-file"></i>
-                <span class="d-none d-md-inline">Submissions</span>
-              <% end %>
+            <%= link_to submissions_path(user_id: current_user.id), class: "nav-link #{'active' if current_page?(submissions_path(user_id: current_user.id))}" do %>
+              <i class="fa-solid fa-file"></i>
+              <span class="d-none d-md-inline">Submissions</span>
+            <% end %>
           <% else  %>
             <%= link_to submissions_path(user_id: current_user.id), class: "nav-link #{'active' if current_page?(submissions_path(user_id: current_user.id))}" do %>
               <i class="fa-solid fa-file"></i>
@@ -47,12 +47,12 @@
           <% end %>
         </li>
         <% if current_user.brand? %>
-        <li class="nav-item">
-          <%= link_to users_path, class: "nav-link #{'active' if current_page?(users_path)}" do %>
-            <i class="fa-solid fa-search"></i>
-            <span class="d-none d-md-inline">Search for Influencers</span>
-          <% end %>
-        </li>
+          <li class="nav-item">
+            <%= link_to users_path, class: "nav-link #{'active' if current_page?(users_path)}" do %>
+              <i class="fa-solid fa-search"></i>
+              <span class="d-none d-md-inline">Search for Influencers</span>
+            <% end %>
+          </li>
         <% end %>
       <% end %>
     </ul>
