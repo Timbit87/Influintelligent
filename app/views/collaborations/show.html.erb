@@ -33,7 +33,7 @@
         <% if @collaboration.user.present? %>
           <%= link_to user_path(@collaboration.user) do %>
             <% if @collaboration.user.avatar.present? %>
-              <%= image_tag @collaboration.user.avatar, class: "me-2 avatar-lerge" %>
+              <%= image_tag @collaboration.user.avatar, class: "me-2 avatar-large" %>
             <% else %>
               <%= image_tag 'user-photo.png', class: "me-2 avatar-large" %>
             <% end %>
