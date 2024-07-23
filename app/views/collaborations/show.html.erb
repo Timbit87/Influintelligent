@@ -13,8 +13,8 @@
             </div>
           </div>
           <div class="price d-flex align-items-center mt-4">
-            <p>$</p>
-            <p class="align-items-center ms-2"><%= @collaboration.price %></p>
+            <p>¥</p>
+            <p class="align-items-center ms-2"><%= number_to_currency(@collaboration.price, :locale => 'jp') %></p>
           </div>
         </div>
       </div>
@@ -33,9 +33,9 @@
         <% if @collaboration.user.present? %>
           <%= link_to user_path(@collaboration.user) do %>
             <% if @collaboration.user.avatar.present? %>
-              <%= image_tag @collaboration.user.avatar, class: "rounded-circle me-2 avatar-photo" %>
+              <%= image_tag @collaboration.user.avatar, class: "me-2 avatar-large" %>
             <% else %>
-              <%= image_tag 'user-photo.png', class: "rounded-circle me-2 avatar-photo" %>
+              <%= image_tag 'user-photo.png', class: "me-2 avatar-large" %>
             <% end %>
             <%= @collaboration.user.first_name %>
           <% end %>
@@ -43,11 +43,14 @@
           <p>Unknown</p>
         <% end %>
       </div>
-        <div class="see-more-link mt-2 d-flex justify-content-end card-button" id="btn-form-classList">
-            <a><%= render 'submissions/form' %></a>
-        </div>
+      <div class="see-more-link mt-2 d-flex justify-content-end card-button" id="btn-form-classList">
+        <a><%= render 'submissions/form' %></a>
+      </div>
       <div class="col-md-8">
       </div>
     </div>
   </div>
+</div>
+<div class="d-flex justify-content-start mt-4 pt-4">
+  <%= link_to 'Back', (request.referrer || collaborations_path), class: "btn-secondary-sm ms-2" %>
 </div>

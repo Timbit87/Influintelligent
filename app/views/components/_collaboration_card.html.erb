@@ -9,8 +9,8 @@
       </div>
     </div>
     <div class="price d-flex align-items-center">
-      <p>$</p>
-      <p class="align-items-center ms-2"><%= collaboration.price %></p>
+      <p>¥</p>
+      <p class="align-items-center ms-2"><%= number_to_currency(collaboration.price, :locale => 'jp') %></p>
     </div>
     <div class="description mt-4 d-flex pe-2">
       <i class="fa-solid fa-quote-left me-2"></i>
@@ -26,9 +26,9 @@
       <% if collaboration.user.present? %>
         <%= link_to user_path(collaboration.user) do %>
           <% if collaboration.user.avatar.present? %>
-            <%= image_tag collaboration.user.avatar, class: "rounded-circle me-2 avatar-photo" %>
+            <%= image_tag collaboration.user.avatar, class: "me-2 avatar" %>
           <% else %>
-            <%= image_tag 'user-photo.png', class: "rounded-circle me-2 avatar-photo" %>
+            <%= image_tag 'user-photo.png', class: "me-2 avatar" %>
           <% end %>
           <%= collaboration.user.first_name %>
         <% end %>
