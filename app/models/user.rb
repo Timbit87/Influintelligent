@@ -4,8 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :submissions #submissions as a user
   has_many :collaborations, dependent: :destroy
-  has_many :submissions, dependent: :destroy
+  has_many :submissions_as_brand, through: :collaborations, source: :submissions
 
   has_one_attached :avatar
 
