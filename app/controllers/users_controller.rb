@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[show, edit, update, destroy]
+  before_action :set_user, only: [:show, :edit]
   # this is influencers controller
 
   def index
@@ -22,6 +22,8 @@ class UsersController < ApplicationController
 
   def show
     if @user.brand?
+      @collaborations = Collaboration.where(user_id: @user.id).order(created_at: :desc)
+      @collaborations_last_3 = @collaborations.limit(3)
       render 'brands/show'
     else
       render 'influencers/show'
