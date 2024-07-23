@@ -26,9 +26,9 @@
       <% if collaboration.user.present? %>
         <%= link_to user_path(collaboration.user) do %>
           <% if collaboration.user.avatar.present? %>
-            <%= image_tag collaboration.user.avatar, class: "rounded-circle me-2 avatar-photo" %>
+            <%= image_tag collaboration.user.avatar, class: "avatar" %>
           <% else %>
-            <%= image_tag 'user-photo.png', class: "rounded-circle me-2 avatar-photo" %>
+            <%= image_tag 'user-photo.png', class: "avatar" %>
           <% end %>
           <%= collaboration.user.first_name %>
         <% end %>
