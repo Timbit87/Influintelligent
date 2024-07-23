@@ -1,6 +1,6 @@
 class SubmissionsController < ApplicationController
   before_action :set_collaboration, only: :create
-  before_action :set_user, only: [:index]
+  before_action :set_user, only: :index
 
   def index
     if @user
@@ -33,6 +33,6 @@ class SubmissionsController < ApplicationController
   end
 
   def set_user
-    @user = User.find(params[:user_id]) if params[:user_id]
+    @user = current_user
   end
 end
