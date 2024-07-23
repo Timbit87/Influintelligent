@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   # this is influencers controller
 
   def index
-    @influencers = User.where(brand: true)
+    @influencers = User.where(brand: false)
     @brands = User.where(brand: true)
   end
 
@@ -21,6 +21,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @influencers = User.where(brand: false)
     if @user.brand?
       @collaborations = Collaboration.where(user_id: @user.id).order(created_at: :desc)
       @collaborations_last_3 = @collaborations.limit(3)
