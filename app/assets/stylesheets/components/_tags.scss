@@ -1,0 +1,16 @@
+.tags a {
+  text-decoration: none;
+  .tag {
+    background: rgba(67, 84, 250, 0.6);
+    padding: 0.3rem 0.8rem;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    color: #fff;
+    transition: background 0.3s;
+    margin-bottom: 1rem;
+
+    &:hover {
+      background: rgba(67, 84, 250, 0.8);
+    }
+  }
+}

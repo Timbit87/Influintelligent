@@ -26,7 +26,13 @@
           <i class="fa-solid fa-quote-right ms-2"></i>
         </div>
       </div>
-      <div class="tags mt-2">
+      <div class="tags mt-4 d-flex">
+        <p class="me-2">Category:</p>
+        <% @collaboration.category.each do |category| %>
+          <%= link_to category_collaborations_path(category) do %>
+            <span class="tag"><%= category %></span>
+          <% end %>
+        <% end %>
       </div>
       <div class="mt-4 created_by">
         <p>Created by:</p>
