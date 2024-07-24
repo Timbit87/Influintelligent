@@ -3,7 +3,7 @@
   <div class="row justify-content-center">
     <div class="col-md-9 mb-4">
       <div class="collaboration-show-card">
-        <div class="banner-card" style="background-image: url('<%= asset_path('banner-card-collaboration.jpg')%>')">
+        <div class="banner-card" style="background-image: url('<%= @collaboration.banner.attached? ? url_for(@collaboration.banner) : asset_path('banner-card-collaboration.jpg') %>')">
           <div class="banner-content">
             <div class="d-flex justify-content-between">
               <h4 class="col-md-9"><%= @collaboration.title %></h4>

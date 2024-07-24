@@ -1,7 +1,7 @@
 class CollaborationsController < ApplicationController
   before_action :set_collaboration, only: [:show]
   before_action :authenticate_brand!, only: [:create, :new]
-  before_action :set_category, only: [:index, :category, :new, :edit]
+  before_action :set_category, only: [:index, :category, :new, :create, :edit]
 
   CATEGORIES = Collaboration::CATEGORIES
 
@@ -22,11 +22,13 @@ class CollaborationsController < ApplicationController
     @collaboration = Collaboration.new(collaboration_params)
     @collaboration.user_id = current_user.id
     if @collaboration.save
-      redirect_to @collaboration
+      redirect_to @collaboration, notice: 'Collaboration was successfully created.'
     else
-      render :new
+      flash.now[:alert] = @collaboration.errors.full_messages.to_sentence
+      render :new, status: :unprocessable_entity
     end
   end
+  
 
   def category
     @category = params[:category]
@@ -42,7 +44,7 @@ class CollaborationsController < ApplicationController
   private
 
   def collaboration_params
-    params.require(:collaboration).permit(:title, :description, :price, :start_date, :end_date, category: [])
+    params.require(:collaboration).permit(:title, :description, :price, :start_date, :end_date, :banner, category: [])
   end
 
   def set_collaboration
