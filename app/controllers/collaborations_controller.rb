@@ -9,6 +9,11 @@ class CollaborationsController < ApplicationController
     @collaborations = Collaboration.all
   end
 
+  def my_collaborations
+    @user = User.find(params[:user_id])
+    @collaborations = @user.collaborations
+  end
+
   def show
     @collaboration = Collaboration.find(params[:id])
     @submission = Submission.new

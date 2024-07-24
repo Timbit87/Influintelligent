@@ -9,7 +9,10 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   devise_for :users
-resources :users
+  
+  resources :users do
+    get 'collaborations', to: 'collaborations#my_collaborations', as: :user_collaborations
+  end
 
 resources :collaborations, only: [:index, :new, :create, :show] do
   collection do

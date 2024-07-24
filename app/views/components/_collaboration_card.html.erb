@@ -41,8 +41,21 @@
         <p>Unknown</p>
       <% end %>
     </div>
-    <div class="see-more-link mt-2 d-flex justify-content-end card-button">
-      <%= link_to 'See More', collaboration_path(collaboration) %>
+    <div>
+      <% if current_page?(user_user_collaborations_path(current_user)) %>
+        <div class="see-more-link mt-2 d-flex justify-content-between align-items-end">
+          <div class="card-button mt-4">
+            <%= link_to 'See More', collaboration_path(collaboration) %>
+          </div>
+          <%= link_to 'edit' do %>
+            <i class="fa-solid fa-pen-to-square"></i>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="see-more-link mt-2 d-flex justify-content-end card-button">
+          <%= link_to 'See More', collaboration_path(collaboration) %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

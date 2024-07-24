@@ -1,0 +1,12 @@
+<div class="container mt-4">
+  <h1><strong><%= @user.first_name %></strong>'s Collaborations</h1>
+  <h3 class="mb-4">See all your Collaborations...</h3>
+  <div class="row">
+    <% @collaborations.each do |collaboration| %>
+      <%= render 'components/collaboration_card', collaboration: collaboration %>
+    <% end %>
+  </div>
+  <div class="d-flex justify-content-start mt-4 pt-4">
+    <%= link_to 'Back', (request.referrer || collaborations_path), class: "btn-secondary-sm ms-2" %>
+  </div>
+</div>

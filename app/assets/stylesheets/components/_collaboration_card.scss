@@ -73,6 +73,19 @@
       }
     }
   }
+
+  .see-more-link {
+    i {
+      font-size: 1.5rem;
+      color: $gray-icon;
+      transition: color 0.3s;
+
+      &:hover {
+        color: $gray-hover;
+      
+      }
+    }
+  }
 }
 
 // SHOW CARD
