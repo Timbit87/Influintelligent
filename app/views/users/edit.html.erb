@@ -1,0 +1,16 @@
+<h1>Edit Profile</h1>
+
+<%= simple_form_for(@user) do |f| %>
+  <%= f.input :first_name %>
+  <%= f.input :last_name %>
+  <%= f.input :contact, label: "Contact Email" %>
+  <%= f.input :about, label: "About You" %>
+  <%= f.input :websites, label: "Your Websites" %>
+  <%= simple_fields_for :social_links do |social_site| %>
+    <%= social_site.input :twitter, label: "Twitter", input_html: {value: @socials["twitter"]} %>
+    <%= social_site.input :facebook, label: "Facebook", input_html: {value: @socials["facebook"]} %>
+    <% end %>
+  <%= f.input :tags %>
+  <%= f.input :availability %>
+  <%= f.submit %>
+<% end %>
