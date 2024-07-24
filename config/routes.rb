@@ -27,6 +27,8 @@ end
     resources :submissions, only: :index
   end
 
+  get 'search', to: 'search#index', as: 'search'
+
   # priority #2 for later
   # resources :users, only: :show do
   #   collection do

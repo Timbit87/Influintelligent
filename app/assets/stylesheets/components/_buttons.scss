@@ -66,3 +66,20 @@
     box-shadow: none; 
   }
 }
+
+// SEARCH BTN 
+
+.btn-search {
+  text-decoration: none;
+  background: $primary-yellow;
+  border: none;
+  padding: 0.5rem 1rem;
+  color: #fff;
+  border-radius: 8px;
+  transition: background 0.3s, border-color 0.3s;
+
+  &:hover {
+    background: $yellow-hover;
+    
+  }
+}

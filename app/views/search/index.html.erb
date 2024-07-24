@@ -1,0 +1,28 @@
+<div class="container">
+  <h1 class="my-4">Search Results for <strong>'<%= @query %>'</strong></h1>
+  <% brands = @users.select(&:brand?) %>
+  <% influencers= @users.reject(&:brand?) %>
+  <% unless brands.empty? %>
+    <h2 class="my-4">Brands:</h2>
+    <% brands.each do |brand| %>
+      <li><%= brand.brand_name.present? ? brand.brand_name : brand.first_name %></li>
+    <% end %>
+  <% end %>
+  <% unless influencers.empty? %>
+    <h2 class="my-4">Influencers:</h2>
+    <% influencer.each do |influencer| %>
+      <li><%= user.first_name %> <%= user.last_name %> (<%= user.brand_name %>)</li>
+    <% end %>
+  <% end %>
+  <% if @collaborations.present? %>
+    <h2 class="my-4">Collaborations:</h2>
+    <ul>
+      <% @collaborations.each do |collaboration| %>
+        <%= render 'components/collaboration_card', collaboration: collaboration %>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
+<div class="d-flex justify-content-start mt-4 pt-4">
+  <%= link_to 'Back', (request.referrer || collaborations_path), class: "btn-secondary-sm ms-2" %>
+</div>
