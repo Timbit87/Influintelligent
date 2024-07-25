@@ -27,25 +27,26 @@
             <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to user_user_collaborations_path(current_user), class: "nav-link #{'active' if current_page?(user_user_collaborations_path(current_user))}" do %>
-              <i class="fa-regular fa-folder-open"></i>
+            <%= link_to collaborations_path(user_id: current_user.id), class: "nav-link #{'active' if current_page?(collaborations_path(user_id: current_user.id))}" do %>
+              <i class="fa-solid fa-handshake"></i>
               <span class="d-none d-md-inline">My Collaborations</span>
             <% end %>
           </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to collaborations_path, class: "nav-link #{'active' if current_page?(collaborations_path)}" do %>
+              <i class="fa-solid fa-handshake"></i>
+              <span class="d-none d-md-inline">Collaborations</span>
+            <% end %>
+          </li>
         <% end %>
-        <li class="nav-item">
-          <%= link_to collaborations_path, class: "nav-link #{'active' if current_page?(collaborations_path)}" do %>
-            <i class="fa-solid fa-handshake"></i>
-            <span class="d-none d-md-inline">Collaborations</span>
-          <% end %>
-        </li>
         <li class="nav-item">
           <% if current_user.brand? %>
             <%= link_to brand_submissions_path(user_id: current_user.id), class: "nav-link #{'active' if current_page?(brand_submissions_path(user_id: current_user.id))}" do %>
               <i class="fa-solid fa-file"></i>
               <span class="d-none d-md-inline">Submissions</span>
             <% end %>
-          <% else  %>
+          <% else %>
             <%= link_to submissions_path(user_id: current_user.id), class: "nav-link #{'active' if current_page?(submissions_path(user_id: current_user.id))}" do %>
               <i class="fa-solid fa-file"></i>
               <span class="d-none d-md-inline">Submissions</span>
@@ -76,8 +77,8 @@
         <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
           <% if current_user.brand? %>
             <li><%= link_to 'Settings', user_path(current_user), class: "dropdown-item" %></li>
+            <hr class="dropdown-divider">
           <% end %>
-          <hr class="dropdown-divider">
           <li>
             <%= link_to "Sign out", destroy_user_session_path, data: { turbo_method: :delete }, class: "dropdown-item" %>
           </li>

@@ -7,11 +7,7 @@ class CollaborationsController < ApplicationController
 
   def index
     @collaborations = Collaboration.all
-  end
-
-  def my_collaborations
-    @user = User.find(params[:user_id])
-    @collaborations = @user.collaborations
+    @my_collaborations = current_user.collaborations
   end
 
   def show
