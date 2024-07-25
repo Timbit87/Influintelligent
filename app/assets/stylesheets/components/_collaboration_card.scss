@@ -1,4 +1,4 @@
-// INDEX CARD 
+// INDEX CARD
 
 .collaboration-card {
   border: 1px solid #dee2e6;
@@ -75,6 +75,10 @@
   }
 }
 
+.no-min-height {
+  min-height: 0 !important;
+}
+
 // SHOW CARD
 
 
@@ -90,7 +94,7 @@
     padding-top: 10%;
     height: 250px;
     border-radius: 8px 8px 0 0;
-  
+
     &::before {
       content: '';
       position: absolute;
