@@ -10,9 +10,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   
-  resources :users do
-    get 'collaborations', to: 'collaborations#my_collaborations', as: :user_collaborations
-  end
+  resources :users 
 
 resources :collaborations, only: [:index, :new, :create, :show] do
   collection do
