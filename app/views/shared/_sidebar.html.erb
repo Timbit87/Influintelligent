@@ -26,20 +26,27 @@
               <span class="d-none d-md-inline">New Collaboration</span>
             <% end %>
           </li>
+          <li class="nav-item">
+            <%= link_to collaborations_path(user_id: current_user.id), class: "nav-link #{'active' if current_page?(collaborations_path(user_id: current_user.id))}" do %>
+              <i class="fa-solid fa-handshake"></i>
+              <span class="d-none d-md-inline">My Collaborations</span>
+            <% end %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to collaborations_path, class: "nav-link #{'active' if current_page?(collaborations_path)}" do %>
+              <i class="fa-solid fa-handshake"></i>
+              <span class="d-none d-md-inline">Collaborations</span>
+            <% end %>
+          </li>
         <% end %>
         <li class="nav-item">
-          <%= link_to collaborations_path, class: "nav-link #{'active' if current_page?(collaborations_path)}" do %>
-            <i class="fa-solid fa-handshake"></i>
-            <span class="d-none d-md-inline">Collaborations</span>
-          <% end %>
-        </li>
-        <li class="nav-item">
           <% if current_user.brand? %>
-            <%= link_to brand_submissions_path(user_id: current_user.id), class: "nav-link #{'active' if current_page?(submissions_path(user_id: current_user.id))}" do %>
+            <%= link_to brand_submissions_path(user_id: current_user.id), class: "nav-link #{'active' if current_page?(brand_submissions_path(user_id: current_user.id))}" do %>
               <i class="fa-solid fa-file"></i>
               <span class="d-none d-md-inline">Submissions</span>
             <% end %>
-          <% else  %>
+          <% else %>
             <%= link_to submissions_path(user_id: current_user.id), class: "nav-link #{'active' if current_page?(submissions_path(user_id: current_user.id))}" do %>
               <i class="fa-solid fa-file"></i>
               <span class="d-none d-md-inline">Submissions</span>
