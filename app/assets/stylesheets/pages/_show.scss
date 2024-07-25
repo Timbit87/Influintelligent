@@ -1,0 +1,241 @@
+.bg-white {
+  background: #fff;
+  border-radius: 24px;
+  padding: 2rem;
+}
+
+.bg-dark-blue {
+  background: $primary-blue;
+  border-radius: 24px;
+  padding: 2rem;
+}
+
+// PROFILE BRANDS 
+
+.profile-container {
+  .profile-name {
+    width: 90%;
+  }
+
+  .profile-photo {
+    width: 200px;
+    height: auto;
+    border-radius: 50%;
+  }
+
+  i {
+    font-size: 1.2rem;
+    color: #fff;
+    background: $purple;
+    padding: 1rem;
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 3rem;
+    height: 3rem; 
+    transition: background 0.3s;
+    
+    &:hover {
+      background: $purple-hover;
+    }
+  }
+
+  
+  a {
+    text-decoration: none;
+  }
+
+  #edit-icon {
+    background: transparent;
+    color: $gray-icon;
+    font-size: 1.5rem;
+  }
+}
+
+.submissions-shot-container {
+
+  a {
+    text-decoration: none;
+    color: $gray-icon;
+  }
+
+  i {
+    font-size: 1.6rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  h4 {
+    font-size: 1.2rem;
+    font-weight: 300;
+
+    strong {
+      font-weight: 600;
+    }
+  }
+}
+
+.collab-show-container {
+  a {
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  p {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  h4 {
+    font-size: 1.3rem;
+    color: $primary-blue;
+    font-weight: 700;
+  }
+
+  .collab-box-dashboard {
+    position: relative;
+    background: #e9eafe;
+    padding: 1.5rem;
+    margin: 1rem;
+    border-radius: 16px;
+
+    a {
+      color: $gray;
+      text-decoration: none;
+      transition: color 0.3s;
+      text-transform: uppercase;
+      font-weight: 600;
+      &:hover {
+        color: $yellow-hover;
+      }
+    }
+
+    .status-container {
+      position: absolute;
+      top: 0.5rem;
+      right: 1rem;
+      margin-top: 1rem;
+    }
+
+    .fa-circle-chevron-right {
+      position: absolute;
+      bottom: 1rem;
+      right: 1rem;
+      color: $primary-blue;
+      font-size: 2rem;
+      transition: color 0.3s;
+  
+      &:hover {
+        color: $purple-hover;
+      }
+    }
+
+    .end-date {
+      font-size: 0.8rem;
+      margin-top: 1rem;
+    }
+  }
+
+  .span-green {
+    color: #fff;
+    background: rgba(25, 181, 112, 0.6);
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+  }
+
+  .span-red {
+    color: #fff;
+    background: rgba(196, 30, 33, 0.6);
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    
+  }
+
+  .span-submissions {
+    margin:0
+  }
+
+  .colab-submissions {
+    height: 150px;
+    width: 150px;
+    border: 2px solid #fff;
+    border-radius: 6px;
+
+    h4 {
+    font-size: 2rem;
+    color: $primary-blue
+  }
+  }
+}
+
+.reviews-cont-show {
+  p {
+    color: #fff;
+  }
+
+  h4 {
+    color: #fff;
+  }
+}
+
+.collaboration-wrapper {
+  position: relative;
+
+  .collaboration-line {
+    position: absolute;
+    left: 12px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: #e9eafe;
+  }
+
+  .icon {
+    position: relative;
+    z-index: 1;
+    font-size: 1.8rem;
+    color: #e9eafe;
+  }
+
+  .status-icon {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.review-container-profile {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  h4 {
+    color: #fff;
+  }
+
+  p {
+    color: #fff;
+  }
+
+  i {
+    color: $yellow;
+  }
+
+  small {
+    color: #b6bbc0;
+  }
+
+  .review-content {
+    flex: 1;
+    overflow: auto;
+
+    p {
+      margin: 0;
+      word-break: break-word;
+    }
+  }
+}

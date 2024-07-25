@@ -1,13 +1,10 @@
-<div class="container">
-  <div class="container-fluid p-0">
-    <div class="banner-card">
-      <h1 class="m-4 text-center display-1 carousel-caption">Welcome to Influintelligent</h1>
-      <%= image_tag "influencer_2.jpg", class: "img-fluid w-100" %>
-    </div>
-  </div>
   <% if user_signed_in? %>
+  <div class="mb-2">
+    <%= render 'components/banner_home', logged_in: true %>
+  </div>
+  <div class="container">
     <div class="p-2 card-body my-4">
-      <h2>Welcome <strong><%= current_user.first_name.capitalize %></strong>!</h2>
+      <h2>Hello <strong><%= current_user.first_name.capitalize %></strong>!</h2>
       <h3>Here are some recently added collaborations:</h3>
     </div>
     <div class="d-flex flex-row flex-nowrap overflow-auto">
@@ -15,15 +12,7 @@
         <%= render 'components/landing_card', collaboration: collaboration %>
       <% end %>
     </div>
-    <% if current_user.brand? %>
-      <%= link_to 'Go to your profile', user_path(current_user) %>
-    <% end %>
   <% else %>
-    <div class="p-2 card-body">
-      <h3>Create an account</h3>
-      <%= link_to 'Register', new_user_registration_path, class: "btn btn-primary mb-2" %>
-      <p>Already a member?</p>
-      <%= link_to 'Log in here', new_user_session_path, class: "btn btn-primary mb-2" %>
-    </div>
+    <%= render 'components/banner_home', logged_in: false %>
   <% end %>
 </div>

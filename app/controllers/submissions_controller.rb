@@ -1,6 +1,7 @@
 class SubmissionsController < ApplicationController
   before_action :set_collaboration, only: :create
-  before_action :set_user, only: [:index]
+  before_action :set_user, only: :index
+  before_action :set_submission, only: :update
 
   def index
     if @user
@@ -14,15 +15,24 @@ class SubmissionsController < ApplicationController
   end
 
   def create
-    @submission = Submission.new(params[:submission])
-    @submission.collaboration = @collaboration
+    @submission = @collaboration.submissions.build(submission_message_params)
     @submission.user = current_user
+
     if @submission.save
       redirect_to collaboration_path(@collaboration)
       flash[:notice] = "Your submission has been sent."
     else
       flash[:alert] = "There was an error creating the submission."
       render 'collaborations/show'
+    end
+  end
+
+  def update
+    @submission = Submission.find(params[:id])
+    if @submission.update(submission_params)
+      redirect_to @submission, notice: "Submission status was successfully updated."
+    else
+      render :edit
     end
   end
 
@@ -33,6 +43,19 @@ class SubmissionsController < ApplicationController
   end
 
   def set_user
-    @user = User.find(params[:user_id]) if params[:user_id]
+    @user = current_user
   end
+
+  def set_submission
+    @submission = Submission.find(params[:id])
+  end
+
+  def submission_params
+    params.require(:submission).permit(:status)
+  end
+
+  def submission_message_params
+    params.require(:submission).permit(:status, :message)
+  end
+
 end

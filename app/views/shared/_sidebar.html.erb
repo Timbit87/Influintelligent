@@ -34,11 +34,26 @@
           <% end %>
         </li>
         <li class="nav-item">
-          <%= link_to submissions_path(user_id: current_user.id), class: "nav-link #{'active' if current_page?(submissions_path(user_id: current_user.id))}" do %>
-            <i class="fa-solid fa-file"></i>
-            <span class="d-none d-md-inline">Submissions</span>
+          <% if current_user.brand? %>
+            <%= link_to brand_submissions_path(user_id: current_user.id), class: "nav-link #{'active' if current_page?(submissions_path(user_id: current_user.id))}" do %>
+              <i class="fa-solid fa-file"></i>
+              <span class="d-none d-md-inline">Submissions</span>
+            <% end %>
+          <% else  %>
+            <%= link_to submissions_path(user_id: current_user.id), class: "nav-link #{'active' if current_page?(submissions_path(user_id: current_user.id))}" do %>
+              <i class="fa-solid fa-file"></i>
+              <span class="d-none d-md-inline">Submissions</span>
+            <% end %>
           <% end %>
         </li>
+        <% if current_user.brand? %>
+          <li class="nav-item">
+            <%= link_to users_path, class: "nav-link #{'active' if current_page?(users_path)}" do %>
+              <i class="fa-solid fa-search"></i>
+              <span class="d-none d-md-inline">Search for Influencers</span>
+            <% end %>
+          </li>
+        <% end %>
       <% end %>
     </ul>
     <hr>
@@ -55,8 +70,8 @@
         <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
           <% if current_user.brand? %>
             <li><%= link_to 'Settings', user_path(current_user), class: "dropdown-item" %></li>
+            <hr class="dropdown-divider">
           <% end %>
-          <hr class="dropdown-divider">
           <li>
             <%= link_to "Sign out", destroy_user_session_path, data: { turbo_method: :delete }, class: "dropdown-item" %>
           </li>

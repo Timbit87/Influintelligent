@@ -1,5 +1,6 @@
 // Import page-specific CSS files here.
 @import "home";
+@import "show";
 
 body {
   display: flex;
@@ -7,7 +8,7 @@ body {
 }
 
 .content {
-  padding: 20px;
+  // padding: 20px;
   width: calc(100% - 280px - 1rem);
 }
 
@@ -16,4 +17,10 @@ body {
     margin-left: 0;
     width: calc(100% - 80px);
   }
+}
+
+.border-b {
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
 }

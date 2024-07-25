@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   # this is influencers controller
 
   def index
-    @influencers = User.where(brand: true)
+    @influencers = User.where(brand: false)
     @brands = User.where(brand: true)
   end
 
@@ -21,7 +21,10 @@ class UsersController < ApplicationController
   end
 
   def show
+    @influencers = User.where(brand: false)
     if @user.brand?
+      @collaborations = Collaboration.where(user_id: @user.id).order(created_at: :desc)
+      @collaborations_last_3 = @collaborations.limit(3)
       render 'brands/show'
     else
       render 'influencers/show'
@@ -47,7 +50,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :brand, :brand_name, :address, :contact, :websites, :social_links, :about, :tags)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :brand, :brand_name, :address, :contact, :website, :social_links, :about, :tags)
   end
 
   def social_params

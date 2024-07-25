@@ -11,10 +11,13 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: "registrations" }
 resources :users
 
-  resources :collaborations, only: [:index, :new, :create, :show] do
-    resources :submissions, only: :create
-    # the new submission form is on the colab show page
+resources :collaborations, only: [:index, :new, :create, :show] do
+  collection do
+    get 'category/:category', to: 'collaborations#category', as: 'category'
   end
+  resources :submissions, only: :create
+end
+
 
   resources :submissions, only: [:index, :update]
   # the accept/reject submission buttons are on the submissions index page
