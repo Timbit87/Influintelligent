@@ -1,2 +1,2 @@
-class Brands::CollaborationsController < ApplicationController
+class Brand::CollaborationsController < ApplicationController
 end

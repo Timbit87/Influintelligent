@@ -5,7 +5,7 @@ class Collaboration < ApplicationRecord
   validates :category, inclusion: { in: CATEGORIES }, allow_nil: false
   belongs_to :user
   has_many :submissions, dependent: :destroy
-  before_save :capitalize_title, :capitalize_categories
+  before_validation :capitalize_title, :capitalize_categories
   validate :user_brand
 
   has_one_attached :banner 
