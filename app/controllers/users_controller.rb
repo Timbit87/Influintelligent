@@ -33,12 +33,12 @@ class UsersController < ApplicationController
   end
 
   def update
+    raise
     if @user.update(user_params.merge(social_links: social_params, website: website_params))
       redirect_to user_path(@user), notice: "Profile was successfully updated.", status: :see_other
     else
       render :edit, status: :unprocessable_entity
     end
-    raise
   end
 
   private
@@ -56,6 +56,6 @@ class UsersController < ApplicationController
   end
 
   def website_params
-    params.require(:websites).permit(@website1, @website2, @website3)
+    params.require(:websites).permit
   end
 end
