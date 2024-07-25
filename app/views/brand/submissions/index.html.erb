@@ -3,14 +3,14 @@
   <h3 class="my-4">These are your current collaborations submissions:</h3>
   <div class="submissions-table">
     <table class="table table-striped table-hover">
-      <thead>
+      <thead class="thead-dark">
         <tr class="p-2 gap-2">
           <th scope="col">#</th>
           <th scope="col">Collaboration</th>
           <th scope="col">Influencer</th>
           <th scope="col">Start Date</th>
           <th scope="col">End Date</th>
-          <th scope="col" class="d-flex">Status</th>
+          <th scope="col">Status</th>
         </tr>
       </thead>
       <tbody>
@@ -24,21 +24,21 @@
               <td><%= link_to submission.user.first_name, user_path(submission.user)%></td>
               <td><%= submission.collaboration.start_date %></td>
               <td><%= submission.collaboration.end_date %></td>
-              <td class="gap-2　mt-2　mb-2">
-                <% if submission.pending? %>
-                  <div class="d-flex gap-2 mt-1　mb-1">
-                    <%= simple_form_for submission do |f| %>
-                      <%= f.input :status, as: :hidden, input_html: { value: 'confirmed'} %>
-                      <%= f.submit 'Confirm', class: 'btn btn-info btn-sm btn-confirm' %>
-                    <% end %>
-                    <%= simple_form_for submission do |f| %>
-                      <%= f.input :status, as: :hidden, input_html: { value: 'declined'} %>
-                      <%= f.submit 'Decline', class: 'btn btn-dark  btn-sm' %>
-                    <% end %>
-                  </div>
-                <% else %>
-                  <td><%= submission.status.capitalize %></td>
-                <% end %>
+              <td>
+                <div class="d-flex flex-sm-row flex-column gap-1">
+                  <% if submission.pending? %>
+                      <%= simple_form_for submission do |f| %>
+                        <%= f.input :status, as: :hidden, input_html: { value: 'confirmed'} %>
+                        <%= f.submit 'Confirm', class: 'btn btn-info btn-sm mb-2' %>
+                      <% end %>
+                      <%= simple_form_for submission do |f| %>
+                        <%= f.input :status, as: :hidden, input_html: { value: 'declined'} %>
+                        <%= f.submit 'Decline', class: 'btn btn-dark btn-sm mb-2'%>
+                      <% end %>
+                  <% else %>
+                    <%= submission.status.capitalize %>
+                  <% end %>
+                </div>
               </td>
             </tr>
           <% end %>
