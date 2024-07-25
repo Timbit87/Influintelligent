@@ -1,20 +1,22 @@
 <h1>Edit Profile</h1>
 
 <%= simple_form_for(@user) do |f| %>
-  <% if @user.brand == true %>
-    <%= f.input :first_name, label: "Name" %>
-  <% else %>
     <%= f.input :first_name %>
     <%= f.input :last_name %>
+  <% if @user.brand? %>
+    <%= f.input :brand_name %>
   <% end %>
   <%= f.input :contact, label: "Contact Email" %>
   <%= f.input :about, label: "About You" %>
-  <%= f.input :websites, label: "Your Website" %>
+  <%= f.input :website, label: "Your Website", input_html: {value: @user.website }%>
   <%= simple_fields_for :social_links do |social_site| %>
-    <%= social_site.input :twitter, label: "Twitter", input_html: {value: @socials["twitter"]} %>
-    <%= social_site.input :facebook, label: "Facebook", input_html: {value: @socials["facebook"]} %>
+    <%= social_site.input :twitter, label: "Twitter", input_html: {value: @socials&.dig("twitter")} %>
+    <%= social_site.input :facebook, label: "Facebook", input_html: {value: @socials&.dig("facebook")} %>
   <% end %>
   <%= f.input :tags, collection: Collaboration::CATEGORIES %>
-  <%= f.input :availability %>
+  <% if @user.brand ==false %>
+    <%= f.input :availability %>
+  <% end %>
+  <%= f.input :avatar %>
   <%= f.submit %>
 <% end %>
