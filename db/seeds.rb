@@ -132,7 +132,7 @@ mizuno = Collaboration.create!(
   title: "Mizuno Marketing",
   description: "We have manufactured brand new functional sneakers and we're looking for an infliencer to work with!",
   price: 100000,
-  category: ["sports"],
+  category: ["Sports"],
   start_date: DateTime.new(2024,7,1,17),
   end_date: DateTime.new(2024,9,1,17),
   user: mizuno
@@ -142,7 +142,7 @@ domino = Collaboration.create!(
   title: "Domino Pizza Campaign",
   description: "Looking for partner to work with our new summer pizza campaign!",
   price: 200000,
-  category: ["food"],
+  category: ["Food"],
   start_date: DateTime.new(2024,8,1,17),
   end_date: DateTime.new(2024,10,1,17),
   user: domino
@@ -152,7 +152,7 @@ sanrio = Collaboration.create!(
   title: "Sanrio campaign",
   description: "Who wants to with with Hello Kitty!?",
   price: 300000,
-  category: ["toy"],
+  category: ["Toy"],
   start_date: DateTime.new(2024,8,1,17),
   end_date: DateTime.new(2024,10,1,17),
   user: sanrio
@@ -162,7 +162,7 @@ sega = Collaboration.create!(
   title: "Sega campaign",
   description: "We developed a new game and want to find a partner to work with for our campaign",
   price: 500000,
-  category: ["game"],
+  category: ["Game"],
   start_date: DateTime.new(2024,8,1,17),
   end_date: DateTime.new(2024,10,1,17),
   user: sega
@@ -172,7 +172,7 @@ dell = Collaboration.create!(
   title: "Dell campaign",
   description: "Invented new device looking for awesome influencer to promote our device!",
   price: 600000,
-  category: ["electronic"],
+  category: ["Electronic"],
   start_date: DateTime.new(2024,8,1,17),
   end_date: DateTime.new(2024,10,1,17),
   user: dell
@@ -182,7 +182,7 @@ kokuyo = Collaboration.create!(
   title: "Kokuyo campaign",
   description: "We created new awesome pencils. We are looking for an influencer who has loves pencils!",
   price: 100000,
-  category: ["stationary"],
+  category: ["Stationary"],
   start_date: DateTime.new(2024,8,1,17),
   end_date: DateTime.new(2024,10,1,17),
   user: kokuyo

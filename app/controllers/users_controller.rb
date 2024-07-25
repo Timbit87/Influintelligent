@@ -1,10 +1,25 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit]
+  before_action :set_category, only: [:index, :new, :create, :edit]
   # this is influencers controller
+
+  CATEGORIES = User::CATEGORIES
 
   def index
     @influencers = User.where(brand: false)
     @brands = User.where(brand: true)
+    results = []
+    gomi = []
+    if params[:query]
+      @influencers.each do |influencer|
+        gomi << influencer if influencer.tags.nil?
+        results << influencer if influencer.tags.include?(params[:query][:category])
+      end
+      @influencers = results
+    else
+      @influencers = User.where(brand: false)
+    end
+    @categories = CATEGORIES
   end
 
   def new
@@ -44,4 +59,7 @@ class UsersController < ApplicationController
     params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :brand, :brand_name, :address, :contact, :websites, :social_links, :about, :tags)
   end
 
+  def set_category
+    @categories = CATEGORIES
+  end
 end

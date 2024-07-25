@@ -8,7 +8,7 @@ class Collaboration < ApplicationRecord
   before_save :capitalize_title, :capitalize_categories
   validate :user_brand
 
-  has_one_attached :banner 
+  has_one_attached :banner
 
   private
 
