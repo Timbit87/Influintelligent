@@ -10,8 +10,6 @@ Rails.application.routes.draw do
 
 
   devise_for :users, controllers: { registrations: "registrations" }
-resources :users
-  devise_for :users
 
   resources :users do
     resources :collaborations, only: [:index]
