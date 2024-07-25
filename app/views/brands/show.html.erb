@@ -5,10 +5,10 @@
     <p>Here is your information...</p>
     <div class="row d-flex align-items-stretch">
       <div class="col-md-9 d-flex">
-        <div class="profile-container w-100 bg-white">
+        <div class="profile-container-brand w-100 bg-white">
           <div class="d-flex">
             <div class="col-md-3 d-flex align-items-center justify-content-center">
-              <%= image_tag 'user-photo.png', class: "profile-photo" %>
+              <%= image_tag(user.avatar.present? ? user.avatar : 'user-photo.png', class: "profile-photo") %>
             </div>
             <div class="col-md">
               <div>
@@ -18,8 +18,7 @@
                       <% if @user.brand_name.present? %>
                         <%= @user.brand_name.capitalize %>
                       <% else %>
-                        <%= @user.first_name.capitalize %>
-                        <%= @user.last_name.capitalize %>
+                        <%= @user.first_name.capitalize %> <%= @user.last_name&.capitalize %>
                       <% end %>
                     </strong>
                   </h4>
