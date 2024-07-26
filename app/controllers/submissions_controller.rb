@@ -1,7 +1,7 @@
 class SubmissionsController < ApplicationController
-  before_action :set_collaboration, only: :create
-  before_action :set_user, only: :index
-  before_action :set_submission, only: :update
+  before_action :set_collaboration, only: [:create]
+  before_action :set_user, only: [:index, :destroy]
+  before_action :set_submission, only: [:update, :destroy]
 
   def index
     if @user
@@ -36,6 +36,12 @@ class SubmissionsController < ApplicationController
     end
   end
 
+  def destroy
+    @submission = Submission.find(params[:id])
+    @submission.destroy
+    redirect_to submissions_path, status: :see_other
+  end
+
   private
 
   def set_collaboration
@@ -57,5 +63,4 @@ class SubmissionsController < ApplicationController
   def submission_message_params
     params.require(:submission).permit(:status, :message)
   end
-
 end
