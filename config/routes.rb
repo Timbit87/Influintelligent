@@ -8,8 +8,12 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root to: "pages#home"
 
-  devise_for :users
-resources :users
+
+  devise_for :users, controllers: { registrations: "registrations" }
+
+  resources :users do
+    resources :collaborations, only: [:index]
+  end
 
 resources :collaborations, only: [:index, :new, :create, :show] do
   collection do

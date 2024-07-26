@@ -48,8 +48,10 @@
           <% end %>
         </div>
         <div class="see-more-link mt-2 d-flex justify-content-end card-button" id="btn-form-classList" data-submission-target="btnClassList">
+          <% unless current_user.brand? %>
           <%= link_to '#', id: 'submit-for-collaboration', data: { action: "click->submission#toggle", submission_target: "button" } do %>
             Submit For Collaboration
+            <% end %>
           <% end %>
         </div>
       </div>
