@@ -2,6 +2,8 @@ class CollaborationsController < ApplicationController
   before_action :set_collaboration, only: [:show, :edit, :update]
   before_action :authenticate_brand!, only: [:create, :new]
   before_action :set_category, only: [:index, :category, :new, :create, :edit]
+  skip_after_action :verify_authorized
+  skip_after_action :verify_policy_scoped
 
   CATEGORIES = Collaboration::CATEGORIES
 
@@ -29,7 +31,7 @@ class CollaborationsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
-  
+
   def edit
   end
 

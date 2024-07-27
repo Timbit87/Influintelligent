@@ -3,12 +3,14 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit]
   before_action :set_category, only: [:index, :new, :create, :edit]
   before_action :set_user, only: %i[show edit update]
+  after_action :verify_policy_scoped, only: :index
 
   # this is influencers controller
 
   CATEGORIES = User::CATEGORIES
 
   def index
+    @users = policy_scope(User)
     @influencers = User.where(brand: false)
     @brands = User.where(brand: true)
     results = []
@@ -27,6 +29,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    authorize @user
   end
 
   def create
@@ -36,9 +39,11 @@ class UsersController < ApplicationController
     else
       render :new
     end
+    authorize @user
   end
 
   def show
+    authorize @user
     @influencer = User.find(params[:id])
     @brand = User.find(params[:id])
     @influencers = User.where(brand: false)
@@ -49,13 +54,16 @@ class UsersController < ApplicationController
     else
       render 'influencers/show'
     end
+
   end
 
   def edit
+    authorize @user
     @socials = @user.social_links
   end
 
   def update
+    authorize @user
     if @user.update(user_params.merge(social_links: social_params))
       redirect_to user_path(@user), notice: "Profile was successfully updated.", status: :see_other
     else
