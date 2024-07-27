@@ -23,7 +23,7 @@ resources :collaborations, only: [:index, :new, :create, :show] do
 end
 
 
-  resources :submissions, only: [:index, :update]
+  resources :submissions, only: [:index, :update, :destroy]
   # the accept/reject submission buttons are on the submissions index page
   # :destroy is not first priority
 
