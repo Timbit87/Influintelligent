@@ -111,3 +111,26 @@
     }
   }
 }
+
+.activity-container {
+  h4 {
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+
+  .border-container {
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    padding: 1rem;
+  }
+
+  a {
+    text-decoration: none;
+    font-weight: 600;
+    color: $primary-blue;
+  }
+
+  span {
+    color: $gray-icon;
+  }
+}
