@@ -98,7 +98,7 @@ influencer1 = User.create!(
   email: 'influencer1@mail.com',
   password: 'password',
   password_confirmation: 'password',
-  first_name: MrBeast,
+  first_name: 'MrBeast',
   brand: false,
   website: Faker::Internet.url,
   social_links: {
