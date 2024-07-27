@@ -39,6 +39,8 @@ class UsersController < ApplicationController
   end
 
   def show
+    @influencer = User.find(params[:id])
+    @brand = User.find(params[:id])
     @influencers = User.where(brand: false)
     if @user.brand?
       @collaborations = Collaboration.where(user_id: @user.id).order(created_at: :desc)
