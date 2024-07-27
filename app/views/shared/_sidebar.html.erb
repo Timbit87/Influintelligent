@@ -70,24 +70,24 @@
           <% if current_user.avatar.attached? %>
             <%= image_tag current_user.avatar, class: "me-2 avatar" %>
           <% else %>
-            <%= image_tag 'user-photo.png', class: "me-2 avatar" %>
+            <% avatar_url = AvatarScraper.get_avatar_url("https://www.instagram.com/#{current_user.instagram_handle}") %>
+            <%= image_tag avatar_url, class: "me-2 avatar" %>
           <% end %>
           <strong class="d-none d-md-inline"><%= current_user.first_name %></strong>
         </a>
         <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
           <li><%= link_to 'Edit Profile', edit_user_path(current_user), class: "dropdown-item" %></li>
-          <%= link_to "Sign out", destroy_user_session_path, data: { turbo_method: :delete }, class: "dropdown-item" %>
-        </li>
-      </ul>
-    <% else %>
-      <a href="#" class="d-flex align-items-center link-white text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-        <%= image_tag 'user-photo.png', class: "me-2 avatar" %>
-      </a>
-      <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-        <li><%= link_to 'Login', new_user_session_path, class: "dropdown-item" %></li>
-        <li><%= link_to 'Register', new_user_registration_path, class: "dropdown-item" %></li>
-      </ul>
-    <% end %>
+          <li><%= link_to "Sign out", destroy_user_session_path, data: { turbo_method: :delete }, class: "dropdown-item" %></li>
+        </ul>
+      <% else %>
+        <a href="#" class="d-flex align-items-center link-white text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+          <%= image_tag 'user-photo.png', class: "me-2 avatar" %>
+        </a>
+        <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+          <li><%= link_to 'Login', new_user_session_path, class: "dropdown-item" %></li>
+          <li><%= link_to 'Register', new_user_registration_path, class: "dropdown-item" %></li>
+        </ul>
+      <% end %>
+    </div>
   </div>
-</div>
 </div>
