@@ -13,16 +13,17 @@
               <% end %>
               <h4 class="text-center mt-4"><strong><%= @user.first_name.capitalize %> <%= @user.last_name&.capitalize %></strong></h4>
               <div class="d-flex justify-content-center">
-                <div class="tags mt-3">
-                  <% if @user.tags.any? %>
-                    <% @user.tags.each do |tag| %>
-                      <span class="tag"><%= tag %></span>
+                <span class="category-influencer">Tag here</span>
+                  <div class="tags mt-3">
+                    <% if @user.tags.any? %>
+                      <% @user.tags.each do |tag| %>
+                        <span class="tag"><%= tag %></span>
+                      <% end %>
+                    <% else %>
+                      <p>No tags available.</p>
                     <% end %>
-                  <% else %>
-                    <p>No tags available.</p>
-                  <% end %>
+                  </div>
                 </div>
-              </div>
               <div class="social-icons-prof d-flex justify-content-center mt-4">
                 <% social_icons = {
                     'twitter' => 'fa-x-twitter',
