@@ -8,8 +8,12 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root to: "pages#home"
 
-  devise_for :users
-resources :users
+
+  devise_for :users, controllers: { registrations: "registrations" }
+
+  resources :users do
+    resources :collaborations, only: [:index]
+  end
 
 resources :collaborations, only: [:index, :new, :create, :show] do
   collection do
@@ -19,7 +23,7 @@ resources :collaborations, only: [:index, :new, :create, :show] do
 end
 
 
-  resources :submissions, only: [:index, :update]
+  resources :submissions, only: [:index, :update, :destroy]
   # the accept/reject submission buttons are on the submissions index page
   # :destroy is not first priority
 

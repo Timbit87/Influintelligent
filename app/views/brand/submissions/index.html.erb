@@ -10,6 +10,7 @@
           <th scope="col">Influencer</th>
           <th scope="col">Start Date</th>
           <th scope="col">End Date</th>
+          <th scope="col">Message</th>
           <th scope="col">Status</th>
         </tr>
       </thead>
@@ -24,6 +25,7 @@
               <td><%= link_to submission.user.first_name, user_path(submission.user)%></td>
               <td><%= submission.collaboration.start_date %></td>
               <td><%= submission.collaboration.end_date %></td>
+              <td><%= submission.message %></td>
               <td>
                 <div class="d-flex flex-sm-row flex-column gap-1">
                   <% if submission.pending? %>

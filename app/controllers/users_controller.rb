@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
+  
   before_action :set_user, only: [:show, :edit]
   before_action :set_category, only: [:index, :new, :create, :edit]
+  before_action :set_user, only: %i[show edit update]
+
   # this is influencers controller
 
   CATEGORIES = User::CATEGORIES
@@ -47,6 +50,15 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @socials = @user.social_links
+  end
+
+  def update
+    if @user.update(user_params.merge(social_links: social_params))
+      redirect_to user_path(@user), notice: "Profile was successfully updated.", status: :see_other
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   private
@@ -56,10 +68,14 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :brand, :brand_name, :address, :contact, :websites, :social_links, :about, :tags)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :avatar, :brand, :brand_name, :address, :contact, :website, :social_links, :about, :tags)
   end
 
   def set_category
     @categories = CATEGORIES
+  end
+  
+  def social_params
+    params.require(:social_links).permit(:twitter, :facebook)
   end
 end

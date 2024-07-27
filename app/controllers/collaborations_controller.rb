@@ -7,6 +7,7 @@ class CollaborationsController < ApplicationController
 
   def index
     @collaborations = Collaboration.all
+    @my_collaborations = current_user.collaborations
   end
 
   def show
