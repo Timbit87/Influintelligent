@@ -1,0 +1,34 @@
+<div class="row influencer-profile-box pe-0">
+  <% social_icons = {
+            'twitter' => 'fa-x-twitter',
+            'tiktok' => 'fa-tiktok',
+            'instagram' => 'fa-instagram',
+            'youtube' => 'fa-youtube'
+          } %>
+  <% base_urls = {
+            'twitter' => 'https://x.com/',
+            'tiktok' => 'https://www.tiktok.com/@',
+            'instagram' => 'https://www.instagram.com/',
+            'youtube' => 'https://www.youtube.com/@'
+          } %>
+  <% if user.social_links.present? %>
+    <div class="p-0 d-flex flex-wrap col-md-12">
+      <% social_icons.each do |platform, icon| %>
+        <% if user.social_links[platform].present? %>
+          <% url = "#{base_urls[platform]}#{user.social_links[platform]}" %>
+          <div class="col-6 p-2">
+            <%= link_to url, target: "_blank" do %>
+              <div class="icons-follow bg-white d-flex align-items-center justify-content-center position-relative">
+                <i class="icons fa-brands <%= icon %> bg-icon"></i>
+                <div class="followers-info text-center position-absolute">
+                  <h3><%= @social_followers[platform] %></h3>
+                  <p>Followers</p>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

@@ -41,21 +41,36 @@ class UsersController < ApplicationController
     end
     authorize @user
   end
-
+  
   def show
     authorize @user
     @influencer = User.find(params[:id])
     @brand = User.find(params[:id])
     @influencers = User.where(brand: false)
+    @social_followers = {}
     if @user.brand?
       @collaborations = Collaboration.where(user_id: @user.id).order(created_at: :desc)
       @collaborations_last_3 = @collaborations.limit(3)
       render 'brands/show'
     else
+      if @user.social_links.present?
+        @user.social_links.each do |platform, identifier|
+          begin
+            username = identifier.split('/').last.split('?').first  # Extraindo apenas o nome de usuário
+            followers_count = SocialMediaScraper.get_followers(platform, username)
+            puts "#{platform.capitalize} followers: #{followers_count}"
+            @social_followers[platform] = followers_count
+          rescue StandardError => e
+            puts "#{platform.capitalize} error for #{identifier}: #{e.message}"
+            @social_followers[platform] = "Error: #{e.message}"
+          end
+        end
+      end
       render 'influencers/show'
     end
 
   end
+  
 
   def edit
     authorize @user

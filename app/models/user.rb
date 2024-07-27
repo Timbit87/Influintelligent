@@ -17,6 +17,12 @@ class User < ApplicationRecord
     self.brand
   end
 
+  def instagram_handle
+    return unless social_links['instagram'].present?
+
+    social_links['instagram'].split('/').last
+  end
+  
   def capitalize_name
     self.first_name = first_name.capitalize if first_name.present?
     self.last_name = last_name.capitalize if last_name.present?

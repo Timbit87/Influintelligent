@@ -1,0 +1,113 @@
+.influencer-profile-container {
+  .profile-photo {
+    width: 200px;
+    height: auto;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  p {
+    font-weight: 300;
+    strong {
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+  }
+
+  h4 {
+    font-size: 1.5rem;
+    font-weight: 300;
+
+    strong {
+      font-weight: 600;
+    }
+  }
+
+  .tag {
+    background: rgba(25, 181, 112, 0.2);
+    color: $green;
+    font-weight: 500;
+    border-radius: 6px;
+    border: 2px solid rgba(25, 181, 112, 0.4);
+    padding: 0.3rem 0.8rem;
+  }
+
+  .bg-gray {
+    background: $light-gray;
+    border-radius: 16px;
+    padding: 1rem;
+  }
+
+  .social-icons-prof {
+    a {
+      text-decoration: none;
+    }
+    i{
+      font-size: 1.5rem;
+      color: $gray-icon;
+      transition: color 0.3s;
+
+      &:hover {
+        color: $purple;
+      }
+    }
+  }
+}
+
+.influencer-profile-box {
+
+  a {
+    text-decoration: none;
+  }
+  
+  .icons-follow {
+    height: 100%; /* Ajuste conforme necessário */
+  width: 100%;
+  position: relative;
+
+  .bg-icon {
+    font-size: 100px; /* Ajuste conforme necessário */
+    color: rgba(0, 0, 0, 0.1); /* Ajuste a cor conforme necessário */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+  }
+
+  .followers-info {
+    z-index: 2;
+  }
+
+    h3 {
+      font-weight: 700;
+      color: $primary-blue;
+      margin-bottom: 0;
+    }
+    
+    .icons {
+      font-size: 9rem;
+      color: rgba(166, 172, 178, 0.3);
+      transition: color 0.4s;
+    }
+
+    p {
+      font-weight: 500;
+      color: $gray;
+      bottom: 0;
+      margin-bottom: 0;
+      transition: color 0.4s;
+    }
+
+    &:hover {
+      i, p {
+        color: rgba(233, 168, 0, 0.3);
+      }
+    }
+
+    .fa-circle-chevron-right {
+      font-size: 1.5rem;
+      color: $gray-icon;
+    }
+  }
+}

@@ -1,5 +1,6 @@
 require_relative "boot"
 
+require 'dotenv/load'
 require "rails/all"
 require 'pundit'
 # Require the gems listed in Gemfile, including any gems
@@ -31,5 +32,7 @@ module Influintelligent
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
     config.serve_static_assets = true
+
+    config.autoload_paths += %W(#{config.root}/services)
   end
 end
