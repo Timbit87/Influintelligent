@@ -16,7 +16,14 @@
       <%= social_site.input :youtube, label: "YouTube Username", input_html: {value: @socials&.dig("youtube")} %>
       <%= social_site.input :tiktok, label: "TikTok Username", input_html: {value: @socials&.dig("tiktok")} %>
     <% end %>
-    <%= f.input :tags, collection: Collaboration::CATEGORIES %>
+    <%= f.label :tags%>
+        <br>
+      <% @categories.each do |category| %>
+        <div class="form-check form-check-inline mt-4 mb-4">
+          <%= f.check_box :tags, { multiple: true, class: 'form-check-input' }, category, nil %>
+          <%= f.label :tags, category, class: 'form-check-label' %>
+        </div>
+      <% end %>
     <% if @user.brand ==false %>
       <%= f.input :availability %>
     <% end %>
