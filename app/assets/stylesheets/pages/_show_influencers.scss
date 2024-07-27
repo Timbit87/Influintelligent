@@ -61,8 +61,23 @@
   }
   
   .icons-follow {
-    height: 100%;
-    transition: color 0.4s;
+    height: 100%; /* Ajuste conforme necessário */
+  width: 100%;
+  position: relative;
+
+  .bg-icon {
+    font-size: 100px; /* Ajuste conforme necessário */
+    color: rgba(0, 0, 0, 0.1); /* Ajuste a cor conforme necessário */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+  }
+
+  .followers-info {
+    z-index: 2;
+  }
 
     h3 {
       font-weight: 700;
@@ -71,15 +86,14 @@
     }
     
     .icons {
-      margin-top: 2rem;
-      font-size: 5rem;
-      color: $gray-icon;
+      font-size: 9rem;
+      color: rgba(166, 172, 178, 0.3);
       transition: color 0.4s;
     }
 
     p {
       font-weight: 500;
-      color: $gray-icon;
+      color: $gray;
       bottom: 0;
       margin-bottom: 0;
       transition: color 0.4s;
@@ -87,7 +101,7 @@
 
     &:hover {
       i, p {
-        color: $yellow-hover;
+        color: rgba(233, 168, 0, 0.3);
       }
     }
 

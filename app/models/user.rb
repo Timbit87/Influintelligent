@@ -13,4 +13,10 @@ class User < ApplicationRecord
   def brand?
     self.brand
   end
+
+  def instagram_handle
+    return unless social_links['instagram'].present?
+
+    social_links['instagram'].split('/').last
+  end
 end

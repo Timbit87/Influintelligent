@@ -1,4 +1,3 @@
-<%# This is the show file for ALL users, brand or influencer alike %>
 <div class="mt-4">
   <% if user_signed_in? %>
     <div class="container">
@@ -6,23 +5,34 @@
         <div class="col-md-5">
           <div class="influencer-profile-container bg-white">
             <div class="row d-flex justify-content-center">
-              <%= image_tag(@user.avatar.present? ? @user.avatar : 'user-photo.png', class: "profile-photo") %>
+              <% if @user.avatar.present? %>
+                <%= image_tag @user.avatar, class: "profile-photo" %>
+              <% else %>
+                <% avatar_url = AvatarScraper.get_avatar_url(@user.instagram_handle) %>
+                <%= image_tag avatar_url, class: "profile-photo" %>
+              <% end %>
               <h4 class="text-center mt-4"><strong><%= @user.first_name.capitalize %> <%= @user.last_name&.capitalize %></strong></h4>
               <div class="d-flex justify-content-center">
                 <span class="tag">Tag here</span>
               </div>
               <div class="social-icons-prof d-flex justify-content-center mt-4">
                 <% social_icons = {
-                  'facebook' => 'fa-facebook-f',
-                  'twitter' => 'fa-x-twitter',
-                  'tik_tok' => 'fa-tiktok',
-                  'instagram' => 'fa-instagram',
-                  'youtube' => 'fa-youtube'
+                    'twitter' => 'fa-x-twitter',
+                    'tiktok' => 'fa-tiktok',
+                    'instagram' => 'fa-instagram',
+                    'youtube' => 'fa-youtube'
+                  } %>
+                <% base_urls = {
+                  'twitter' => 'https://x.com/',
+                  'tiktok' => 'https://www.tiktok.com/@',
+                  'instagram' => 'https://www.instagram.com/',
+                  'youtube' => 'https://www.youtube.com/@'
                 } %>
                 <% if @user.social_links.present? %>
                   <% social_icons.each do |platform, icon| %>
                     <% if @user.social_links[platform].present? %>
-                      <%= link_to @user.social_links[platform], target: "_blank" do %>
+                      <% url = "#{base_urls[platform]}#{@user.social_links[platform]}" %>
+                      <%= link_to url, target: "_blank" do %>
                         <i class="fa-brands <%= icon %> mx-2"></i>
                       <% end %>
                     <% end %>

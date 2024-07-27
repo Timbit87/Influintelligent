@@ -1,6 +1,3 @@
-require 'open-uri'
-require 'nokogiri'
-
 class YoutubeScraper
   def self.extract_youtube_handle(youtube_url)
     youtube_url.split('@').last
@@ -11,14 +8,14 @@ class YoutubeScraper
     url = "https://socialblade.com/youtube/user/#{handle}"
     doc = Nokogiri::HTML(URI.open(url))
 
-    selector = 'div.YouTubeUserTopInfo span#youtube-stats-header-subs'
+    selector = 'div.YouTubeUserTopInfo:nth-of-type(2) > span#youtube-stats-header-subs'  
 
     followers_element = doc.at_css(selector)
 
     if followers_element
       followers_count = followers_element.text.strip
     else
-      followers_count = "Elemento não encontrado"
+      followers_count = "not found"
     end
 
     followers_count

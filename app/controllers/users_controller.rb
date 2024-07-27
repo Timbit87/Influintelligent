@@ -19,21 +19,6 @@ class UsersController < ApplicationController
       render :new
     end
   end
-
-  # def show
-  #   @influencers = User.where(brand: false)
-  #   if @user.brand?
-  #     @collaborations = Collaboration.where(user_id: @user.id).order(created_at: :desc)
-  #     @collaborations_last_3 = @collaborations.limit(3)
-  #     render 'brands/show'
-  #   else
-  #     render 'influencers/show'
-  #     @instagram_followers = InstagramScraper.get_followers(@user.instagram_username) if @user.instagram_username.present?
-  #     @twitter_followers = TwitterScraper.get_followers(@user.twitter_username) if @user.twitter_username.present?
-  #     @youtube_followers = YoutubeScraper.get_followers(@user.youtube_channel_id) if @user.youtube_channel_id.present?
-  #     @tiktok_followers = TiktokScraper.get_followers(@user.tiktok_username) if @user.tiktok_username.present?
-  #   end
-  # end
   
   def show
     @influencers = User.where(brand: false)
@@ -84,6 +69,6 @@ class UsersController < ApplicationController
   end
 
   def social_params
-    params.require(:social_links).permit(:twitter, :facebook)
+    params.require(:social_links).permit(:twitter, :facebook, :tiktok, :instagram, :youtube)
   end
 end

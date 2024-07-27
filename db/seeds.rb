@@ -98,15 +98,14 @@ influencer1 = User.create!(
   email: 'influencer1@mail.com',
   password: 'password',
   password_confirmation: 'password',
-  first_name: Faker::Name.first_name,
-  last_name: Faker::Name.last_name,
+  first_name: MrBeast,
   brand: false,
   website: Faker::Internet.url,
   social_links: {
     twitter: 'MrBeast',
     instagram: "mrbeast",
     tiktok: 'mrbeast',
-    youtube: 'mrbeast'
+    youtube: 'mrbeast6000'
   },
   availability: Date.today,
   about: Faker::Lorem.paragraph,
@@ -125,6 +124,25 @@ influencer2 = User.create!(
     instagram: "pewdiepie",
     tiktok: 'pewdiepie',
     youtube: 'pewdiepie'
+  },
+  availability: Date.today,
+  about: Faker::Lorem.paragraph,
+  tags: [Faker::Lorem.word, Faker::Lorem.word],
+)
+
+influencer3 = User.create!(
+  email: 'influencer3@mail.com',
+  password: 'password',
+  password_confirmation: 'password',
+  first_name: 'kylie',
+  last_name: 'jenner',
+  brand: false,
+  website: Faker::Internet.url,
+  social_links: {
+    twitter: 'kyliejenner',
+    instagram: "kyliejenner",
+    tiktok: 'kyliejenner',
+    youtube: 'kyliejenner'
   },
   availability: Date.today,
   about: Faker::Lorem.paragraph,
@@ -229,6 +247,11 @@ Submission.create!(
 
 Submission.create!(
   user: influencer1,
+  collaboration: kokuyo
+)
+
+Submission.create!(
+  user: influencer3,
   collaboration: kokuyo
 )
 
