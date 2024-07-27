@@ -8,7 +8,7 @@
         <div class="profile-container-brand w-100 bg-white">
           <div class="d-flex">
             <div class="col-md-3 d-flex align-items-center justify-content-center">
-              <%= image_tag(user.avatar.present? ? user.avatar : 'user-photo.png', class: "profile-photo") %>
+              <%= image_tag(@user.avatar.present? ? @user.avatar : 'user-photo.png', class: "profile-photo") %>
             </div>
             <div class="col-md">
               <div>
@@ -36,7 +36,7 @@
                   'linkedin' => 'fa-linkedin-in',
                   'tik_tok' => 'fa-tiktok',
                   'instagram' => 'fa-instagram',
-                  'YouTube' => 'fa-youtube'
+                  'youtube' => 'fa-youtube'
                 } %>
                 <% if @user.social_links.present? %>
                   <% social_icons.each do |platform, icon| %>

@@ -3,6 +3,7 @@
     width: 200px;
     height: auto;
     border-radius: 50%;
+    object-fit: cover;
   }
 
   p {
@@ -23,17 +24,76 @@
   }
 
   .tag {
-    background: rgba(25, 181, 112, 0.4);
+    background: rgba(25, 181, 112, 0.2);
     color: $green;
+    font-weight: 500;
     border-radius: 6px;
-    border: 2px solid rgba(25, 181, 112, 0.6);
+    border: 2px solid rgba(25, 181, 112, 0.4);
     padding: 0.3rem 0.8rem;
-    font-weight: 300;
   }
 
   .bg-gray {
     background: $light-gray;
     border-radius: 16px;
     padding: 1rem;
+  }
+
+  .social-icons-prof {
+    a {
+      text-decoration: none;
+    }
+    i{
+      font-size: 1.5rem;
+      color: $gray-icon;
+      transition: color 0.3s;
+
+      &:hover {
+        color: $purple;
+      }
+    }
+  }
+}
+
+.influencer-profile-box {
+
+  a {
+    text-decoration: none;
+  }
+  
+  .icons-follow {
+    height: 100%;
+    transition: color 0.4s;
+
+    h3 {
+      font-weight: 700;
+      color: $primary-blue;
+      margin-bottom: 0;
+    }
+    
+    .icons {
+      margin-top: 2rem;
+      font-size: 5rem;
+      color: $gray-icon;
+      transition: color 0.4s;
+    }
+
+    p {
+      font-weight: 500;
+      color: $gray-icon;
+      bottom: 0;
+      margin-bottom: 0;
+      transition: color 0.4s;
+    }
+
+    &:hover {
+      i, p {
+        color: $yellow-hover;
+      }
+    }
+
+    .fa-circle-chevron-right {
+      font-size: 1.5rem;
+      color: $gray-icon;
+    }
   }
 }

@@ -102,24 +102,33 @@ influencer1 = User.create!(
   last_name: Faker::Name.last_name,
   brand: false,
   website: Faker::Internet.url,
-  social_links: { twitter: Faker::Internet.url, facebook: Faker::Internet.url },
+  social_links: {
+    twitter: 'MrBeast',
+    instagram: "mrbeast",
+    tiktok: 'mrbeast',
+    youtube: 'mrbeast'
+  },
   availability: Date.today,
   about: Faker::Lorem.paragraph,
-  tags: [Faker::Lorem.word, Faker::Lorem.word]
+  tags: [Faker::Lorem.word, Faker::Lorem.word],
 )
 
 influencer2 = User.create!(
   email: 'influencer2@mail.com',
   password: 'password',
   password_confirmation: 'password',
-  first_name: Faker::Name.first_name,
-  last_name: Faker::Name.last_name,
+  first_name: 'Pewdiepie',
   brand: false,
   website: Faker::Internet.url,
-  social_links: { twitter: Faker::Internet.url, facebook: Faker::Internet.url },
+  social_links: {
+    twitter: 'pewdiepie',
+    instagram: "pewdiepie",
+    tiktok: 'pewdiepie',
+    youtube: 'pewdiepie'
+  },
   availability: Date.today,
   about: Faker::Lorem.paragraph,
-  tags: [Faker::Lorem.word, Faker::Lorem.word]
+  tags: [Faker::Lorem.word, Faker::Lorem.word],
 )
 
 puts 'Brands and Influencers created!'

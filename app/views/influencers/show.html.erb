@@ -2,32 +2,56 @@
 <div class="mt-4">
   <% if user_signed_in? %>
     <div class="container">
-      <div class="col-md-5">
-        <div class="influencer-profile-container bg-white">
-          <div class="row d-flex justify-content-center">
-            <%= image_tag(@user.avatar.present? ? @user.avatar : 'user-photo.png', class: "profile-photo") %>
-            <h4 class="text-center mt-4"><strong><%= @user.first_name.capitalize %> <%= @user.last_name&.capitalize %><strong></h4>
-                <div class="d-flex justify-content-center">
-                  <span class="tag">Tag here</span>
-                </div>
-                <div class="bg-gray my-4">
-                  <p><strong>About Me:</strong></p>
-                  <p><%= @user.about %></p>
-                </div>
-                <div class="bg-gray my-4">
-                  <p><strong>I'm available on:</strong></p>
-                  <p><%= @user.availability %></p>
-                </div>
-                <div class="bg-gray my-4">
-                  <p><strong>Contact:</strong></p>
-                  <p><i class="fa-solid fa-envelope"></i> <%= @user.email %></p>
-                  <p><i class="fa-solid fa-globe"></i> <%= @user.website   %></p>
-                </div>
+      <div class="row d-flex align-items-stretch">
+        <div class="col-md-5">
+          <div class="influencer-profile-container bg-white">
+            <div class="row d-flex justify-content-center">
+              <%= image_tag(@user.avatar.present? ? @user.avatar : 'user-photo.png', class: "profile-photo") %>
+              <h4 class="text-center mt-4"><strong><%= @user.first_name.capitalize %> <%= @user.last_name&.capitalize %></strong></h4>
+              <div class="d-flex justify-content-center">
+                <span class="tag">Tag here</span>
+              </div>
+              <div class="social-icons-prof d-flex justify-content-center mt-4">
+                <% social_icons = {
+                  'facebook' => 'fa-facebook-f',
+                  'twitter' => 'fa-x-twitter',
+                  'tik_tok' => 'fa-tiktok',
+                  'instagram' => 'fa-instagram',
+                  'youtube' => 'fa-youtube'
+                } %>
+                <% if @user.social_links.present? %>
+                  <% social_icons.each do |platform, icon| %>
+                    <% if @user.social_links[platform].present? %>
+                      <%= link_to @user.social_links[platform], target: "_blank" do %>
+                        <i class="fa-brands <%= icon %> mx-2"></i>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              </div>
+              <div class="bg-gray my-4">
+                <p><strong>About Me:</strong></p>
+                <p><%= @user.about %></p>
+              </div>
+              <div class="bg-gray my-4">
+                <p><strong>I'm available on:</strong></p>
+                <p><%= @user.availability %></p>
+              </div>
+              <div class="bg-gray mt-4">
+                <p><strong>Contact:</strong></p>
+                <p><i class="fa-solid fa-envelope"></i> <%= @user.email %></p>
+                <p><i class="fa-solid fa-globe"></i> <%= @user.website   %></p>
               </div>
             </div>
           </div>
         </div>
+        <div class="col-md row d-flex">
+          <%= render 'components/icons_card', user: @user %>
+          <div class="bg-white m-2">
+          </div>
+        </div>
       <% else %>
-        <p>No collaborations found.</p>
+        <p>Login first</p>
       <% end %>
     </div>
+  </div>

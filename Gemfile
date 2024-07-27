@@ -80,3 +80,7 @@ end
 
 gem "devise"
 gem "cloudinary"
+
+gem 'open-uri'
+gem 'nokogiri'
+gem 'httparty'
