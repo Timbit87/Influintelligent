@@ -1,5 +1,5 @@
 class CollaborationsController < ApplicationController
-  before_action :set_collaboration, only: [:show]
+  before_action :set_collaboration, only: [:show, :edit, :update]
   before_action :authenticate_brand!, only: [:create, :new]
   before_action :set_category, only: [:index, :category, :new, :create, :edit]
 
@@ -30,6 +30,16 @@ class CollaborationsController < ApplicationController
     end
   end
   
+  def edit
+  end
+
+  def update
+    if @collaboration.update(collaboration_params)
+      redirect_to @collaboration, notice: 'Collaboration was successfully updated.'
+    else
+      render :edit
+    end
+  end
 
   def category
     @category = params[:category]

@@ -198,4 +198,13 @@
       }
     }
   }
+
+  .fa-pen-to-square {
+    color: $gray-icon;
+    font-size: 1.5rem;
+
+    &:hover {
+      color: $gray-hover;
+    }
+  }
 }
