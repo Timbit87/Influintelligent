@@ -1,13 +1,3 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
-
 include ActionView::Helpers::NumberHelper
 
 User.destroy_all
@@ -109,7 +99,7 @@ influencer1 = User.create!(
   },
   availability: Date.today,
   about: Faker::Lorem.paragraph,
-  tags: [Faker::Lorem.word, Faker::Lorem.word],
+  tags: ['Game', "Tech"],
 )
 
 influencer2 = User.create!(
@@ -127,7 +117,7 @@ influencer2 = User.create!(
   },
   availability: Date.today,
   about: Faker::Lorem.paragraph,
-  tags: [Faker::Lorem.word, Faker::Lorem.word],
+  tags: ['Game'],
 )
 
 influencer3 = User.create!(
@@ -146,7 +136,7 @@ influencer3 = User.create!(
   },
   availability: Date.today,
   about: Faker::Lorem.paragraph,
-  tags: [Faker::Lorem.word, Faker::Lorem.word],
+  tags: ['Beauty'],
 )
 
 puts 'Brands and Influencers created!'
@@ -155,7 +145,7 @@ Collaboration.destroy_all
 
 puts 'Creating Collab.....'
 
-mizuno = Collaboration.create!(
+collab1 = Collaboration.create!(
   title: "Mizuno Marketing",
   description: "We have manufactured brand new functional sneakers and we're looking for an infliencer to work with!",
   price: 100000,
@@ -165,7 +155,7 @@ mizuno = Collaboration.create!(
   user: mizuno
 )
 
-domino = Collaboration.create!(
+collab2 = Collaboration.create!(
   title: "Domino Pizza Campaign",
   description: "Looking for partner to work with our new summer pizza campaign!",
   price: 200000,
@@ -175,7 +165,7 @@ domino = Collaboration.create!(
   user: domino
 )
 
-sanrio = Collaboration.create!(
+collab3 = Collaboration.create!(
   title: "Sanrio campaign",
   description: "Who wants to with with Hello Kitty!?",
   price: 300000,
@@ -185,7 +175,7 @@ sanrio = Collaboration.create!(
   user: sanrio
 )
 
-sega = Collaboration.create!(
+collab4 = Collaboration.create!(
   title: "Sega campaign",
   description: "We developed a new game and want to find a partner to work with for our campaign",
   price: 500000,
@@ -195,7 +185,7 @@ sega = Collaboration.create!(
   user: sega
 )
 
-dell = Collaboration.create!(
+collab5 = Collaboration.create!(
   title: "Dell campaign",
   description: "Invented new device looking for awesome influencer to promote our device!",
   price: 600000,
@@ -205,7 +195,7 @@ dell = Collaboration.create!(
   user: dell
 )
 
-kokuyo = Collaboration.create!(
+collab6 = Collaboration.create!(
   title: "Kokuyo campaign",
   description: "We created new awesome pencils. We are looking for an influencer who has loves pencils!",
   price: 100000,
@@ -222,38 +212,56 @@ puts 'Creating Submission.....'
 
 Submission.create!(
   user: influencer1,
-  collaboration: domino
+  collaboration: collab1,
+  status: :confirmed
+)
+
+Submission.create!(
+  user: influencer1,
+  collaboration: collab2,
+  status: :confirmed
+)
+
+Submission.create!(
+  user: influencer1,
+  collaboration: collab3,
+  status: :confirmed
 )
 
 Submission.create!(
   user: influencer2,
-  collaboration: mizuno
-)
-
-Submission.create!(
-  user: influencer1,
-  collaboration: sanrio
-)
-
-Submission.create!(
-  user: influencer1,
-  collaboration: sega
+  collaboration: collab4,
+  status: :confirmed
 )
 
 Submission.create!(
   user: influencer2,
-  collaboration: dell
+  collaboration: collab5,
+  status: :confirmed
 )
 
 Submission.create!(
-  user: influencer1,
-  collaboration: kokuyo
+  user: influencer2,
+  collaboration: collab6,
+  status: :confirmed
 )
 
 Submission.create!(
   user: influencer3,
-  collaboration: kokuyo
+  collaboration: collab1,
+  status: :confirmed
 )
 
+Submission.create!(
+  user: influencer3,
+  collaboration: collab2,
+  status: :confirmed
+)
+
+Submission.create!(
+  user: influencer3,
+  collaboration: collab3,
+  status: :confirmed
+)
 
 puts "Submission created!"

@@ -13,7 +13,15 @@
               <% end %>
               <h4 class="text-center mt-4"><strong><%= @user.first_name.capitalize %> <%= @user.last_name&.capitalize %></strong></h4>
               <div class="d-flex justify-content-center">
-                <span class="tag">Tag here</span>
+                <div class="tags mt-3">
+                  <% if @user.tags.any? %>
+                    <% @user.tags.each do |tag| %>
+                      <span class="tag"><%= tag %></span>
+                    <% end %>
+                  <% else %>
+                    <p>No tags available.</p>
+                  <% end %>
+                </div>
               </div>
               <div class="social-icons-prof d-flex justify-content-center mt-4">
                 <% social_icons = {
@@ -57,7 +65,22 @@
         </div>
         <div class="col-md row d-flex">
           <%= render 'components/icons_card', user: @user %>
-          <div class="bg-white m-2">
+          <div class="bg-white m-2 activity-container">
+            <h3>Activity:</h3>
+            <div class="m-4 border-container">
+              <h4 class="mb-4">Last Accepted Collaborations:</h4>
+              <% last_accepted_submissions = @user.submissions.confirmed.order(created_at: :desc).last(3) %>
+              <% if last_accepted_submissions.present? %>
+                <% last_accepted_submissions.each_with_index do |submission, index| %>
+                  <div class="d-flex pb-2 mb-2 justify-content-between <%= 'border-bottom' unless index == last_accepted_submissions.size - 1 %>">
+                    <%= link_to submission.collaboration.title, collaboration_path(submission.collaboration) %>
+                    <span><%= submission.updated_at.strftime("%d %b %Y") %></span>
+                  </div>
+                <% end %>
+              <% else %>
+                <p>No accepted collaborations yet.</p>
+              <% end %>
+            </div>
           </div>
         </div>
       <% else %>
