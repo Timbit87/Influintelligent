@@ -140,11 +140,13 @@
       <div class="col-md my-4 d-flex">
         <div class="bg-dark-blue review-container-profile w-100">
           <!-- Conteúdo adicional aqui -->
-          <h4>Last reviews:</h4>
+          <h4>Last reviews: </h4>
           <div class="review-content mt-4">
+            <% (1..5).each do |star| %>
             <i class="fa-solid fa-star"></i>
-            <p>sadhiahdiuhiduhakdiadiauhdiahsdiuhasiudhisahdiuahsi</p>
-            <small>User name - <strong>Collab Name</strong></small>
+            <% end %>
+            <p>It was really fun to collaborate with them! </p>
+            <small>Lorence  <strong>Marketing campaign</strong></small>
           </div>
         </div>
       </div>
