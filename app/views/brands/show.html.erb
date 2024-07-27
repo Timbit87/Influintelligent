@@ -27,8 +27,12 @@
                       <% end %>
                     </strong>
                   </h4>
-                  <%= link_to edit_user_path(@user) do %>
-                    <i class="fa-regular fa-pen-to-square" id="edit-icon"></i>
+                  <% if policy(@user).edit? %>
+                    <%= link_to edit_user_path(@user) do %>
+                      <i class="fa-regular fa-pen-to-square" id="edit-icon"></i>
+                    <% end %>
+                  <% else %>
+                    <span>You are not authorized to edit this user.</span>
                   <% end %>
                 </div>
                 <p><strong>About You:<br>

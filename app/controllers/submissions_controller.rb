@@ -2,6 +2,8 @@ class SubmissionsController < ApplicationController
   before_action :set_collaboration, only: [:create]
   before_action :set_user, only: [:index, :destroy]
   before_action :set_submission, only: [:update, :destroy]
+  skip_after_action :verify_authorized
+  skip_after_action :verify_policy_scoped
 
   def index
     if @user
