@@ -8,7 +8,13 @@
         <div class="profile-container-brand w-100 bg-white">
           <div class="d-flex">
             <div class="col-md-3 d-flex align-items-center justify-content-center">
-              <%= image_tag(@user.avatar.present? ? @user.avatar : 'user-photo.png', class: "profile-photo") %>
+
+            <% if @brand.avatar.present? %>
+              <%= image_tag(@brand.avatar, class: "profile-photo") %>
+            <% else %>
+              <%= image_tag('user-photo.png', class: "profile-photo") %>
+            <% end %>
+
             </div>
             <div class="col-md">
               <div>
@@ -22,8 +28,12 @@
                       <% end %>
                     </strong>
                   </h4>
-                  <%= link_to edit_user_path(@user) do %>
-                    <i class="fa-regular fa-pen-to-square" id="edit-icon"></i>
+                  <% if policy(@user).edit? %>
+                    <%= link_to edit_user_path(@user) do %>
+                      <i class="fa-regular fa-pen-to-square" id="edit-icon"></i>
+                    <% end %>
+                  <% else %>
+                    <span>You are not authorized to edit this user.</span>
                   <% end %>
                 </div>
                 <p><strong>About You:<br>

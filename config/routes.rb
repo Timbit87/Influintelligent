@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     resources :collaborations, only: [:index]
   end
 
-resources :collaborations, only: [:index, :new, :create, :show] do
+resources :collaborations do
   collection do
     get 'category/:category', to: 'collaborations#category', as: 'category'
   end
@@ -23,7 +23,7 @@ resources :collaborations, only: [:index, :new, :create, :show] do
 end
 
 
-  resources :submissions, only: [:index, :update]
+  resources :submissions, only: [:index, :update, :destroy]
   # the accept/reject submission buttons are on the submissions index page
   # :destroy is not first priority
 

@@ -1,14 +1,35 @@
 class UsersController < ApplicationController
+
+  before_action :set_user, only: [:show, :edit]
+  before_action :set_category, only: [:index, :new, :create, :edit]
   before_action :set_user, only: %i[show edit update]
+  after_action :verify_policy_scoped, only: :index
+
   # this is influencers controller
 
+  CATEGORIES = User::CATEGORIES
+
   def index
+    @users = policy_scope(User)
     @influencers = User.where(brand: false)
     @brands = User.where(brand: true)
+    results = []
+    gomi = []
+    if params[:query]
+      @influencers.each do |influencer|
+        gomi << influencer if influencer.tags.nil?
+        results << influencer if influencer.tags.include?(params[:query][:category])
+      end
+      @influencers = results
+    else
+      @influencers = User.where(brand: false)
+    end
+    @categories = CATEGORIES
   end
 
   def new
     @user = User.new
+    authorize @user
   end
 
   def create
@@ -18,9 +39,13 @@ class UsersController < ApplicationController
     else
       render :new
     end
+    authorize @user
   end
   
   def show
+    authorize @user
+    @influencer = User.find(params[:id])
+    @brand = User.find(params[:id])
     @influencers = User.where(brand: false)
     @social_followers = {}
     if @user.brand?
@@ -43,14 +68,17 @@ class UsersController < ApplicationController
       end
       render 'influencers/show'
     end
+
   end
   
 
   def edit
+    authorize @user
     @socials = @user.social_links
   end
 
   def update
+    authorize @user
     if @user.update(user_params.merge(social_links: social_params))
       redirect_to user_path(@user), notice: "Profile was successfully updated.", status: :see_other
     else
@@ -65,10 +93,14 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :avatar, :brand, :brand_name, :address, :contact, :website, :social_links, :about, :tags)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :avatar, :brand, :brand_name, :address, :contact, :website, :social_links, :about, tags:[])
+  end
+
+  def set_category
+    @categories = CATEGORIES
   end
 
   def social_params
-    params.require(:social_links).permit(:twitter, :facebook, :tiktok, :instagram, :youtube)
+    params.require(:social_links).permit(:twitter, :facebook, :instagram, :youtube, :tiktok)
   end
 end

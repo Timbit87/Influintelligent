@@ -1,0 +1,30 @@
+<div class="banner-top" style="background-image: url('<%= @collaboration.banner.attached? ? url_for(@collaboration.banner) : asset_path('banner-card-collaboration.jpg') %>')">
+  <div class="container mt-4">
+    <h1>Edit Collaboration</h1>
+    <%= simple_form_for @collaboration, local: true do |f| %>
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-10">
+          <%= f.input :title %>
+          <%= f.input :description %>
+          <%= f.input :price, as: :numeric %>
+          <%= f.input :category, input_html: { value: @collaboration.category.join(', ') } %>
+          <div class="d-flex">
+            <div class="col-md-6 me-2">
+              <%= f.input :start_date, as: :string, input_html: { data: { controller: 'datepicker' } } %>
+            </div>
+            <div class="col-md ms-2">
+              <%= f.input :end_date, as: :string, input_html: { data: { controller: 'datepicker' } } %>
+            </div>
+          </div>
+          <%= f.input :banner, label: 'Change the Banner (optional)', as: :file %>
+          <div class="submit-form my-4 pt-4 text-center">
+            <%= f.submit %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <div class="d-flex justify-content-start mt-4 pt-4">
+      <%= link_to 'Back', (request.referrer || collaborations_path), class: "btn-secondary-sm ms-2" %>
+    </div>
+  </div>
+</div>

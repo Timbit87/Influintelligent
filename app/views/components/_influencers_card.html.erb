@@ -9,7 +9,7 @@
 
     <div class="price d-flex align-items-center py-2">
           <% if influencer.avatar.present? %>
-            <%= image_tag influencer.avatar, class: "me-2" %>
+            <%= image_tag(influencer.avatar, size: '80x80', class: "me-2") %>
           <% else %>
             <%= image_tag('user-photo.png', size: '80x80', class: "me-2") %>
           <% end %>

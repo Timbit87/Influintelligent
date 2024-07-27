@@ -52,6 +52,7 @@ gem "sassc-rails"
 
 gem 'htmlbeautifier'
 gem 'faker'
+gem 'pundit'
 
 group :development, :test do
   gem "dotenv-rails"
