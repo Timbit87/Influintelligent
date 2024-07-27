@@ -8,8 +8,8 @@
         <div class="profile-container w-100 bg-white">
           <div class="d-flex">
             <div class="col-md-3 d-flex align-items-center justify-content-center">
-            <% if current_user.avatar.present? %>
-              <%= image_tag(current_user.avatar, class: "profile-photo") %>
+            <% if @brand.avatar.present? %>
+              <%= image_tag(@brand.avatar, class: "profile-photo") %>
             <% else %>
               <%= image_tag('user-photo.png', class: "profile-photo") %>
             <% end %>

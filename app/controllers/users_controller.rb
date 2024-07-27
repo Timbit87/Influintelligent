@@ -44,6 +44,8 @@ class UsersController < ApplicationController
 
   def show
     authorize @user
+    @influencer = User.find(params[:id])
+    @brand = User.find(params[:id])
     @influencers = User.where(brand: false)
     if @user.brand?
       @collaborations = Collaboration.where(user_id: @user.id).order(created_at: :desc)
@@ -76,7 +78,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :avatar, :brand, :brand_name, :address, :contact, :website, :social_links, :about, :tags)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :avatar, :brand, :brand_name, :address, :contact, :website, :social_links, :about, tags:[])
   end
 
   def set_category
@@ -84,6 +86,6 @@ class UsersController < ApplicationController
   end
 
   def social_params
-    params.require(:social_links).permit(:twitter, :facebook)
+    params.require(:social_links).permit(:twitter, :facebook, :instagram, :youtube, :tiktok)
   end
 end
