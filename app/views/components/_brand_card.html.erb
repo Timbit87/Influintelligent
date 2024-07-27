@@ -1,0 +1,35 @@
+<div class="col-md-4 mb-4">
+  <div class="influencer-card">
+    <div class="d-flex flex-column align-items-center">
+      <h4 class="text-center mt-3"><%= brand.brand_name.present? ? brand.brand_name : brand.first_name %></h4>
+      <div class="avatar-container mt-2">
+        <% if brand.avatar.present? %>
+          <%= image_tag brand.avatar, class: "avatar-xxl" %>
+        <% else %>
+          <% avatar_url = AvatarScraper.get_avatar_url(brand.instagram_handle) %>
+          <%= image_tag avatar_url, class: "avatar-xxl" %>
+        <% end %>
+      </div>
+      <div class="mt-4 pb-4 d-flex justify-content-center">
+        <small>
+          <% brand.tags.each do |tag| %>
+            <span class="category-influencer"><%= tag %></span>
+          <% end %>
+        </small>
+      </div>
+    </div>
+    <div class="description mt-5 d-flex pe-2">
+      <i class="fa-solid fa-quote-left me-2"></i>
+      <div class="text-truncate">
+        <%= brand.about %>
+      </div>
+      <div class="fade-overlay"></div>
+    </div>
+    <div class="mt-4 created_by">
+      <p>Visit their profile:</p>
+    </div>
+    <div class="see-more-link mt-2 d-flex justify-content-center card-button">
+      <%= link_to 'See Profile', user_path(brand), class: "" %>
+    </div>
+  </div>
+</div>
