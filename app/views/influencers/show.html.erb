@@ -1,6 +1,4 @@
 <%# This is the show file for ALL users, brand or influencer alike %>
-
-
 <div class="mt-4">
   <% if user_signed_in? %>
     <h1>Hello <%= @user.first_name.capitalize %></h1>
@@ -10,11 +8,11 @@
         <div class="profile-container w-100">
           <div class="d-flex">
             <div class="col-md-3 d-flex align-items-center justify-content-center">
-            <% if current_user.avatar.present? %>
-              <%= image_tag(current_user.avatar, class: "profile-photo") %>
-            <% else %>
-              <%= image_tag('user-photo.png', class: "profile-photo") %>
-            <% end %>
+              <% if current_user.avatar.present? %>
+                <%= image_tag(current_user.avatar, class: "profile-photo") %>
+              <% else %>
+                <%= image_tag('user-photo.png', class: "profile-photo") %>
+              <% end %>
             </div>
             <div class="col-md">
               <div>
@@ -25,7 +23,7 @@
                         <%= @user.brand_name.capitalize %>
                       <% else %>
                         <%= @user.first_name.capitalize %>
-                        <%= @user.last_name.capitalize %>
+                        <%= @user.last_name&.capitalize if @user.last_name.present? %>
                       <% end %>
                     </strong>
                   </h4>
