@@ -1,6 +1,5 @@
 require_relative "boot"
 
-require 'dotenv/load'
 require "rails/all"
 require 'pundit'
 # Require the gems listed in Gemfile, including any gems
