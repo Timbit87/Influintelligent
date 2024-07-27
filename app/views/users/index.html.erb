@@ -2,8 +2,13 @@
   <div class="col-md-12 col-lg-3 order-lg-2 order-md-2 mt-4">
     <div class="search">
       <h3>Search by:</h3>
-      <div class="tags d-flex flex-wrap">
-      </div>
+          <div class="tags d-flex flex-wrap">
+            <% @categories.each do |category| %>
+              <%= link_to users_path(query: { category: category }) do %>
+                <div class="tag m-2"><%= category %></div>
+              <% end %>
+            <% end %>
+          </div>
     </div>
   </div>
   <div class="col-md-12 col-lg order-lg-1 order-md-1 mt-4">
