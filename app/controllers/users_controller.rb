@@ -76,6 +76,6 @@ class UsersController < ApplicationController
   end
 
   def social_params
-    params.require(:social_links).permit(:twitter, :facebook)
+    params.require(:social_links).permit(:twitter, :facebook, :instagram, :youtube, :tiktok)
   end
 end
