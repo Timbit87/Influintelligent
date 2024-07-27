@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  
+
   before_action :set_user, only: [:show, :edit]
   before_action :set_category, only: [:index, :new, :create, :edit]
   before_action :set_user, only: %i[show edit update]
@@ -74,7 +74,7 @@ class UsersController < ApplicationController
   def set_category
     @categories = CATEGORIES
   end
-  
+
   def social_params
     params.require(:social_links).permit(:twitter, :facebook)
   end
