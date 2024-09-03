@@ -1,1 +1,1 @@
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
+Influenteligent connects influencers with brands for mutually beneficial partnerships, allowing influencers to promote brands and companies to reach their target audience through collaborations.
