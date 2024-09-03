@@ -8,21 +8,17 @@
               <% if @user.avatar.present? %>
                 <%= image_tag @user.avatar, class: "profile-photo" %>
               <% else %>
-                <% avatar_url = AvatarScraper.get_avatar_url(@user.instagram_handle) %>
-                <%= image_tag avatar_url, class: "profile-photo" %>
+                <%= image_tag 'user-photo.png', class: "profile-photo" %>
               <% end %>
               <h4 class="text-center mt-4"><strong><%= @user.first_name.capitalize %> <%= @user.last_name&.capitalize %></strong></h4>
               <div class="d-flex justify-content-center">
-                <span class="category-influencer">Tag here</span>
-                <div class="tags mt-3">
-                  <% if @user.tags.any? %>
+                <span class="category-influencer"> <% if @user.tags.any? %>
                     <% @user.tags.each do |tag| %>
                       <span class="tag"><%= tag %></span>
                     <% end %>
                   <% else %>
                     <p>No tags available.</p>
-                  <% end %>
-                </div>
+                  <% end %></span>
               </div>
               <div class="social-icons-prof d-flex justify-content-center mt-4">
                 <% social_icons = {
@@ -87,8 +83,5 @@
       <% else %>
         <p>Login first</p>
       <% end %>
-    </div>
-    <div class="d-flex justify-content-start my-4">
-      <%= link_to 'Back', (request.referrer || collaborations_path), class: "btn-secondary-sm ms-2" %>
     </div>
   </div>
