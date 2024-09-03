@@ -4,20 +4,28 @@ User.destroy_all
 
 puts 'Creating brands.. '
 
-mizuno = User.create!(
+bear = User.create!(
   email: 'brand1@mail.com',
   password: 'password',
   password_confirmation: 'password',
-  first_name: "Mizuno",
-  last_name: "Marketing Team",
+  first_name: "Yogi",
+  last_name: "Bear",
+  brand_name: "Noboribetsu BearPark",
   brand: true,
-  website: Faker::Internet.url,
-  social_links: { twitter: Faker::Internet.url, facebook: Faker::Internet.url },
+  website: "www.bearpark.jp",
+  social_links: { twitter: Faker::Internet.url, facebook: Faker::Internet.url, instagram: Faker::Internet.url, youtube: Faker::Internet.url, tiktok: Faker::Internet.url},
   availability: Date.today,
-  about: Faker::Lorem.paragraph,
-  tags: [Faker::Lorem.word, Faker::Lorem.word]
+  about: "RAWR RAWR RAWRRRRRR...RAAAWWWWWWWWWRRRRR",
+  tags: [Faker::Lorem.word, Faker::Lorem.word],
 )
-domino = User.create!(
+file = URI.open("https://res.cloudinary.com/du06tj0o3/image/upload/v1722061706/development/d7dahiz0y4iodj6a4w40eairnibv.jpg")
+
+bear.avatar.attach(io: file,
+  filename: "bear_profile",
+  content_type: "image/jpg")
+  bear.save
+
+  domino = User.create!(
   email: 'brand2@mail.com',
   password: 'password',
   password_confirmation: 'password',
@@ -146,13 +154,13 @@ Collaboration.destroy_all
 puts 'Creating Collab.....'
 
 collab1 = Collaboration.create!(
-  title: "Mizuno Marketing",
+  title: "Bear Park Marketing",
   description: "We have manufactured brand new functional sneakers and we're looking for an infliencer to work with!",
   price: 100000,
   category: ["Sports"],
   start_date: DateTime.new(2024,7,1,17),
   end_date: DateTime.new(2024,9,1,17),
-  user: mizuno
+  user: bear
 )
 
 collab2 = Collaboration.create!(
