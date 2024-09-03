@@ -22,6 +22,7 @@ resources :collaborations do
   resources :submissions, only: :create
 end
 
+get 'search', to: 'search#index', as: 'search'
 
   resources :submissions, only: [:index, :update, :destroy]
   # the accept/reject submission buttons are on the submissions index page
